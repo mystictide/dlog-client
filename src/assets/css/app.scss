@@ -1,0 +1,236 @@
+@import "./normalize.css";
+
+@font-face {
+    font-family: "Montserrat Light";
+    src:
+        local("Montserrat-Light"),
+        url("../fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Montserrat Regular";
+    src:
+        local("Montserrat-Regular"),
+        url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Montserrat Bold";
+    src:
+        local("Montserrat-Bold"),
+        url("../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+$font-light: "Montserrat Light", sans-serif;
+$font-mont: "Montserrat Regular", sans-serif;
+$font-bold: "Montserrat Bold", sans-serif;
+$font-sans: sans-serif;
+
+$bg-dark: #212121;
+$bg-light: #ffffff;
+$dark-font: #212121;
+$light-font: #ffffff;
+$flavour-light: #b2533e;
+$flavour-dark: #fce09b;
+
+@mixin transition {
+    transition: all 0.35s ease;
+    -webkit-transition: all 0.35s ease;
+}
+
+@mixin no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@mixin button-reset {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+@mixin overlay($light-theme: true) {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: -1;
+
+    @if $light-theme {
+        opacity: 0.1;
+        background-color: $bg-light;
+        background-image: repeating-radial-gradient(circle at 0 0, transparent 0, $bg-light 7px),
+            repeating-linear-gradient(#b2533e55, #b2533e);
+    } @else {
+        opacity: 1;
+        background-color: $bg-dark;
+        background-image: repeating-radial-gradient(circle at 0 0, transparent 0, $bg-dark 7px),
+            repeating-linear-gradient(#4c292155, #4c2921);
+    }
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: $font-mont;
+    color: $dark-font;
+    background-color: $bg-light;
+    .flavour {
+        background-color: $flavour-light;
+    }
+    .overlay {
+        @include overlay($light-theme: true);
+    }
+}
+
+body[data-theme="dark"] {
+    background-color: $bg-dark;
+    color: $light-font;
+    .flavour {
+        background-color: $flavour-dark;
+    }
+    .overlay {
+        @include overlay($light-theme: false);
+    }
+}
+
+.main-container {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    .content-wrapper {
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 950px;
+
+        .page-center {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.resume {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .about {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+        font-family: $font-light;
+        row-gap: 1rem;
+        h3 {
+            line-height: 1.9;
+        }
+        h4 {
+            line-height: 1.8;
+        }
+        a {
+            font-size: 1rem;
+            font-family: $font-mont;
+            text-decoration: none;
+            color: $flavour-light;
+            @include transition();
+            &:hover {
+                @include transition();
+                border-bottom: 3px solid $flavour-dark;
+            }
+        }
+    }
+    .socials {
+        padding: 10px;
+        a {
+            padding: 7px;
+            color: $flavour-light;
+            font-size: 1.8rem;
+            @include transition();
+            &:hover {
+                @include transition();
+                color: $flavour-dark;
+            }
+        }
+    }
+    .tech {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        column-gap: 2px;
+        padding: 15px 55px;
+
+        span {
+            opacity: 0.6;
+            font-size: 2rem;
+            padding: 5px;
+            border-radius: 33px;
+            @include transition();
+            &:hover {
+                @include transition();
+                opacity: 1;
+                // background-color: $flavour-light;
+            }
+
+            svg {
+                display: block;
+                margin: 0 auto;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+
+    span {
+        padding: 3px;
+        border-radius: 33px;
+        @include transition();
+        &:hover {
+            @include transition();
+            background-color: $flavour-light;
+        }
+
+        svg {
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 740px) {
+    .resume .about h3 {
+        font-size: 3vw;
+    }
+}
