@@ -21,7 +21,7 @@ import {
 export default function Home() {
 
   return (
-    <div className="content-wrapper">
+    <div className="full-page">
       <div className="resume">
         <div className="about">
           <div className="personal">
@@ -48,7 +48,7 @@ export default function Home() {
             </h4>
             <h4>
               View live versions of some of my{" "}
-              <Link target="_blank" href="/projects">
+              <Link href="/projects">
                 projects
               </Link>
             </h4>

@@ -59,7 +59,7 @@ $flavour-dark: #fce09b;
     width: 100%;
     min-height: 100%;
     position: absolute;
-    z-index: -1;
+    z-index: 0;
 
     @if $light-theme {
         opacity: 0.1;
@@ -87,8 +87,8 @@ $flavour-dark: #fce09b;
 
 html,
 body {
-    height: 100%;
     width: 100%;
+    height: 100vh;
     font-family: $font-mont;
     color: $dark-font;
     background-color: $bg-light;
@@ -111,12 +111,36 @@ body[data-theme="dark"] {
     }
 }
 
+#root {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.h-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
+
+    li {
+        position: relative;
+        display: block;
+    }
+}
+
 .main-container {
     z-index: 1;
     position: relative;
-    height: 100%;
+    overflow: hidden;
+
+    .full-page {
+        height: 100vh;
+    }
+
     .content-wrapper {
-        height: 100%;
         width: 100%;
         margin: 0 auto;
         max-width: 950px;
@@ -205,10 +229,83 @@ body[data-theme="dark"] {
     }
 }
 
-.theme {
+.projects {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 1.5rem;
+    margin: 10% 0;
+    .header {
+        h4 {
+            opacity: 0.75;
+            line-height: 1.4;
+        }
+        a {
+            text-decoration: none;
+            color: $flavour-light;
+            @include transition();
+            &:hover {
+                @include transition();
+                color: lighten($color: $flavour-light, $amount: 15);
+            }
+        }
+    }
+    .projects-container {
+        width: 100%;
+        height: 100%;
+
+        .project-box {
+            height: 350px;
+            width: 49%;
+            background: no-repeat center / cover;
+            border: 1px solid $flavour-light;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+                color: $light-font;
+                background-color: $flavour-light;
+            }
+            .actions {
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                font-size: 0.9rem;
+                height: calc(100% - 30px);
+                width: 100%;
+                @include no-select();
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 35px;
+                    width: 100%;
+                    text-align: center;
+                    background-color: $flavour-light;
+                    border-top: 1px solid $flavour-light;
+                    text-decoration: none;
+                    color: $bg-light;
+                    @include transition();
+                    &:hover {
+                        @include transition();
+                        background-color: lighten($color: $flavour-light, $amount: 20);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.theme {
+    z-index: 777;
+    position: fixed;
+    bottom: 15px;
+    left: 49vw;
+    display: flex;
     font-size: 1.5rem;
     text-align: center;
 
@@ -229,8 +326,38 @@ body[data-theme="dark"] {
     }
 }
 
-@media (max-width: 740px) {
+@media (min-width: 941px) {
+    .main-container .content-wrapper {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 940px) {
+    .main-container .content-wrapper {
+        width: 85%;
+    }
+    .resume .about h3 {
+        font-size: 2vw;
+    }
+    .projects .header h4 {
+        font-size: 2vw;
+    }
+    .projects .projects-container .project-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .main-container .content-wrapper {
+        width: 85%;
+    }
     .resume .about h3 {
         font-size: 3vw;
+    }
+    .projects .header h4 {
+        font-size: 2.3vw;
+    }
+    .projects .projects-container .project-box {
+        width: 100%;
     }
 }

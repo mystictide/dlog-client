@@ -15,9 +15,9 @@ export default function RootLayout({ children }) {
     <>
       <html lang="en">
         <body data-theme={theme}>
-          <div className="main-container">
+          <div id="root">
             <div className="overlay"></div>
-            {children}
+            <div className="main-container">{children}</div>
           </div>
         </body>
       </html>

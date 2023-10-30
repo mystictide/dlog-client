@@ -17,16 +17,22 @@ html {
    ========================================================================== */
 
 /**
- * Remove the margin in all browsers.
- */
-
-body {
-  margin: 0;
-}
-
-/**
  * Render the `main` element consistently in IE.
  */
+
+html,
+body {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  overflow: auto;
+}
 
 main {
   display: block;
@@ -174,7 +180,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -184,7 +191,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
