@@ -1,6 +1,6 @@
 import { setThemeCookies } from "@/app/(main)/actions";
 import { readCookie } from "@/assets/js/helpers";
-import SetThemeClient from "@/components/client/settings/setTheme";
+import SetThemeClient from "@/components/client/user/settings/setTheme";
 import { cookies } from "next/headers";
 
 export default function SetTheme() {

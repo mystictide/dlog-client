@@ -188,14 +188,25 @@ body[data-theme="dark"] {
     }
     .socials {
         padding: 10px;
+        display: flex;
+        align-items: center;
         a {
+            display: flex;
+            align-items: center;
+            height: 100%;
             padding: 7px;
             color: $flavour-light;
-            font-size: 1.8rem;
+            font-size: 1.55rem;
+            text-decoration: none;
+            font-family: $font-light;
             @include transition();
             &:hover {
                 @include transition();
                 color: $flavour-dark;
+            }
+            svg {
+                font-size: 1.8rem;
+                height: 100%;
             }
         }
     }
@@ -352,7 +363,7 @@ body[data-theme="dark"] {
         width: 85%;
     }
     .resume .about h1 {
-       font-size: 30px;
+        font-size: 30px;
     }
     .resume .about h3 {
         font-size: 3vw;

@@ -1,6 +1,7 @@
+import "@/assets/css/main.scss";
 import { readCookie } from "@/assets/js/helpers";
+import Header from "@/components/client/layout/header";
 import { cookies } from "next/headers";
-import "../../assets/css/resume.scss";
 
 export default function RootLayout({ children }) {
   const cookieStore = cookies();
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
         <body data-theme={theme} suppressHydrationWarning={true}>
           <div id="root">
             <div className="overlay"></div>
-            <div className="main-container">{children}</div>
+            <div className="main-container">
+              <Header />
+              {children}
+            </div>
           </div>
         </body>
       </html>

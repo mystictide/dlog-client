@@ -1,4 +1,4 @@
-import SetTheme from "@/components/server/settings/setTheme";
+import SetTheme from "@/components/server/user/settings/setTheme";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaCss3Alt, FaNode, FaReact, FaSass } from "react-icons/fa";
@@ -19,7 +19,6 @@ import {
 } from "react-icons/tb";
 
 export default function Home() {
-
   return (
     <div className="full-page">
       <div className="resume">
@@ -48,9 +47,7 @@ export default function Home() {
             </h4>
             <h4>
               View live versions of some of my{" "}
-              <Link href="/projects">
-                projects
-              </Link>
+              <Link href="/projects">projects</Link>
             </h4>
             <h4>
               Available at{" "}
@@ -63,6 +60,9 @@ export default function Home() {
         <div className="socials">
           <a target="_blank" href="https://github.com/mystictide">
             <BsGithub />
+          </a>
+          <a target="_blank" href="/blog">
+            blog
           </a>
           <a target="_blank" href="https://www.linkedin.com/in/furkan-glr">
             <BsLinkedin />

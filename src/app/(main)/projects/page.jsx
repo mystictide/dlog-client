@@ -1,5 +1,5 @@
 import Portfolio from "@/components/server/resume/portfolio";
-import SetTheme from "@/components/server/settings/setTheme";
+import SetTheme from "@/components/server/user/settings/setTheme";
 import Link from "next/link";
 import { TbArrowBack } from "react-icons/tb";
 
