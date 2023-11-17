@@ -2,6 +2,7 @@
 import { login } from "@/actions/auth/actions";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function Login({ modalControl, setRegState }) {
   const [formData, setFormData] = useState({
@@ -18,10 +19,11 @@ export default function Login({ modalControl, setRegState }) {
     }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const userData = { email, password };
-    login(userData);
+    let res = await login(userData);
+    toast(res);
   };
 
   return (

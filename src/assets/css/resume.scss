@@ -228,7 +228,6 @@ body[data-theme="dark"] {
             &:hover {
                 @include transition();
                 opacity: 1;
-                // background-color: $flavour-light;
             }
 
             svg {

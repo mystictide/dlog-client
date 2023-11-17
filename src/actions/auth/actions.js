@@ -1,50 +1,89 @@
 "use server";
+import { readCookie } from "@/assets/js/helpers";
+import axios from "axios";
 import { cookies } from "next/headers";
+import { resetSettings, setSettings } from "../user/actions";
 
 const API_URL = "http://localhost:3737/";
+// const API_URL = "https://dapi.herrguller.cc/";
+const cookieStore = cookies();
 
 export async function register(data) {
   try {
-    const res = await fetch(API_URL + "auth/register", {
-      method: "GET",
+    var config = {
+      method: "post",
+      url: API_URL + "auth/register",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    cookies().set("auth", res.json());
-    return res.json();
+      data: JSON.stringify(data),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        let user = JSON.stringify(response.data);
+        delete user.settings;
+        cookies().set("auth", user);
+      })
+      .catch(function (error) {
+        return error;
+      });
+    return readCookie(cookieStore, "auth") ?? false;
   } catch (error) {
-    return false;
+    return true;
   }
 }
 
 export async function login(data) {
   try {
-    const res = await fetch(API_URL + "auth/login", {
-      method: "POST",
+    var config = {
+      method: "post",
+      url: API_URL + "auth/login",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    cookies().set("auth", res.json());
-    return res.json();
+      data: JSON.stringify(data),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        setSettings(response.data.Settings);
+        delete response.data.Settings;
+        cookies().set("auth", JSON.stringify(response.data));
+        return response.data;
+      })
+      .catch(function (error) {
+        return error.response.data;
+      });
+    return readCookie(cookieStore, "auth") ?? data;
   } catch (error) {
-    return false;
+    return true;
   }
+}
+
+export async function logout() {
+  resetSettings();
+  cookies().delete("auth");
+  return true;
 }
 
 export async function checkExistingUsername(data) {
   try {
-    const res = await fetch(API_URL + "auth/cusername", {
-      method: "POST",
+    var config = {
+      method: "post",
+      url: API_URL + "auth/cusername",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    return res.json();
+      data: JSON.stringify(data),
+    };
+    let resp;
+    var data = await axios(config)
+      .then(function (response) {
+        resp = JSON.stringify(response.data);
+      })
+      .catch(function (error) {
+        return true;
+      });
+    return resp;
   } catch (error) {
     return true;
   }
@@ -52,14 +91,23 @@ export async function checkExistingUsername(data) {
 
 export async function checkExistingEmail(data) {
   try {
-    const res = await fetch(API_URL + "auth/cmail", {
-      method: "POST",
+    var config = {
+      method: "post",
+      url: API_URL + "auth/cmail",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
-    return res.json();
+      data: JSON.stringify(data),
+    };
+    let resp;
+    var data = await axios(config)
+      .then(function (response) {
+        resp = JSON.stringify(response.data);
+      })
+      .catch(function (error) {
+        return true;
+      });
+    return resp;
   } catch (error) {
     return true;
   }

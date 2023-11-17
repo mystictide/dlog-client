@@ -1,12 +1,17 @@
+import { readCookie } from "@/assets/js/helpers";
 import SetTheme from "@/components/server/user/settings/setTheme";
+import { cookies } from "next/headers";
 import Link from "next/link";
-import AuthClient from "../user/accounts/authClient";
+import AuthClient from "../../client/user/accounts/authClient";
 
 export default function Header() {
+  const cookieStore = cookies();
+  const user = readCookie(cookieStore, "auth");
+
   return (
     <div className="header">
       <div className="nav">
-        <AuthClient/>
+        {user ? "" : <AuthClient />}
         <div className="categories">
           <ul className="h-list">
             <li>

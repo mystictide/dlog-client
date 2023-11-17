@@ -1,4 +1,4 @@
-import { setThemeCookies } from "@/app/(main)/actions";
+import { setSettings } from "@/actions/user/actions";
 import { readCookie } from "@/assets/js/helpers";
 import SetThemeClient from "@/components/client/user/settings/setTheme";
 import { cookies } from "next/headers";
@@ -14,7 +14,8 @@ export default function SetTheme() {
 
   const handleTheme = async (data) => {
     "use server";
-    await setThemeCookies(data);
+    let theme = { theme: data };
+    await setSettings(theme);
   };
 
   return <SetThemeClient theme={theme} handleTheme={handleTheme} />;

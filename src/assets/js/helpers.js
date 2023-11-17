@@ -74,8 +74,7 @@ export function buildFilterURL(reqData) {
 }
 
 export function readCookie(cookieStore, name) {
-  const cookie = cookieStore.get(name)
-    ? JSON.parse(cookieStore.get(name).value)
-    : null;
-  return cookie;
+  const cookie = cookieStore.get(name) ? cookieStore.get(name).value : null;
+  const res = cookie ? JSON.parse(cookie) : null;
+  return res;
 }

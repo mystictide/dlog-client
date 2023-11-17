@@ -18,7 +18,6 @@ export default function Register({ modalControl, setRegState }) {
   const [formValidation, setFormValidation] = useState({
     vPassword: true,
   });
-  const [isLoading, setIsLoading] = useState(true);
   const [usernameExists, setUsernameExists] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
   const { username, email, password } = formData;
@@ -27,53 +26,53 @@ export default function Register({ modalControl, setRegState }) {
   useEffect(() => {
     const validateUsername = setTimeout(async () => {
       if (username.length > 0) {
-        setIsLoading(true);
         let res = await checkExistingUsername(username);
-        setUsernameExists(res);
-        setIsLoading(false);
+        if (res === "false") {
+          setUsernameExists(false);
+        } else {
+          setUsernameExists(true);
+        }
       }
     }, 2000);
     return () => clearTimeout(validateUsername);
-  }, [username, setTimeout, setUsernameExists, setUsernameExists]);
+  }, [username, usernameExists, setUsernameExists, checkExistingUsername]);
 
   useEffect(() => {
     const validateMail = setTimeout(async () => {
       if (email.length > 0) {
-        setIsLoading(true);
         let res = await checkExistingEmail(email);
-        setEmailExists(res);
-        setIsLoading(false);
+        if (res === "false") {
+          setEmailExists(false);
+        } else {
+          setEmailExists(true);
+        }
       }
     }, 2000);
     return () => clearTimeout(validateMail);
-  }, [email, setTimeout, setEmailExists, checkExistingEmail]);
+  }, [email, emailExists, setEmailExists]);
 
   useEffect(() => {
     const validatePassword = setTimeout(() => {
-      setIsLoading(true);
       if (password.length > 6) {
         setFormValidation((prevState) => ({
           ...prevState,
           vPassword: false,
         }));
-        setIsLoading(false);
       } else {
         setFormValidation((prevState) => ({
           ...prevState,
           vPassword: true,
         }));
-        setIsLoading(false);
       }
     }, 2000);
     return () => clearTimeout(validatePassword);
   }, [password]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     const userData = { username, email, password };
     if (!vPassword && !usernameExists && !emailExists) {
-      register(userData);
+      await register(userData);
     }
   };
 
@@ -87,7 +86,7 @@ export default function Register({ modalControl, setRegState }) {
       ></div>
       <div className="modal-content">
         <section className="heading">
-          <h1>Join up!</h1>
+          <h1>Join up! {usernameExists}</h1>
           <FaTimes
             onClick={() => {
               modalControl(false);
@@ -153,7 +152,7 @@ export default function Register({ modalControl, setRegState }) {
               ""
             )}
             <div className="functions">
-              {isLoading ? (
+              {vPassword || usernameExists || emailExists ? (
                 <button type="button" className="btn-loading">
                   <BarLoader
                     color="#b2533e"
@@ -168,9 +167,9 @@ export default function Register({ modalControl, setRegState }) {
                   <button type="submit" className="btn-function">
                     Sign up
                   </button>
-                  <span onClick={() => setRegState(false)}>..or log in</span>
                 </>
               )}
+              <span onClick={() => setRegState(false)}>..or log in</span>
             </div>
           </form>
         </section>
