@@ -3,8 +3,8 @@ import { readCookie } from "@/assets/js/helpers";
 import axios from "axios";
 import { cookies } from "next/headers";
 
-const API_URL = "http://localhost:3737/";
-// const API_URL = "https://dapi.herrguller.cc/";
+// const API_URL = "http://localhost:3737/";
+const API_URL = "https://dapi.herrguller.cc/";
 
 export async function setSettings(data) {
   const cookieStore = cookies();
@@ -67,14 +67,21 @@ export async function manageAvatar(data) {
       };
       var data = await axios(config)
         .then(function (response) {
-          let settings = { picture: response.data };
+          let settings = {
+            picture:
+              "https://dapi.herrguller.cc/static/avatars/user" +
+              response.data +
+              "ua-small.jpg",
+          };
           setSettings(settings);
-          return response.data;
+          let resp = { success: true, picture: settings.picture };
+          return resp;
         })
         .catch(function (error) {
-          return error;
+          let err = { error: true, message: error?.response.data };
+          return err;
         });
-      return data ?? false;
+      return data;
     } else {
       return false;
     }

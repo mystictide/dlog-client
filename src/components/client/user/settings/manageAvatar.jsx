@@ -6,16 +6,24 @@ import { BiImageAdd } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-export default function ManageAvatar() {
+export default function ManageAvatar({ picture }) {
   const [image, setImage] = useState(null);
+
+  function randomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   const handleAvatar = async (e) => {
     const formData = new FormData();
     if (e.target.files[0]) {
       formData.append("file", e.target.files[0], e.target.files[0].name);
-      setImage(formData);
       let res = await manageAvatar(formData);
-      toast(res);
+      if (res?.success) {
+        setImage(res?.picture + `?${randomNumberInRange(0, 25)}`);
+      }
+      if (res?.error) {
+        toast(res?.error.message);
+      }
     }
   };
 
@@ -33,7 +41,13 @@ export default function ManageAvatar() {
           />
           <BiImageAdd className="editor" />
         </div>
-        <FaUser className="default" />
+        {image ? (
+          <img src={image} />
+        ) : picture ? (
+          <img src={picture} />
+        ) : (
+          <FaUser className="default" />
+        )}
       </div>
     </div>
   );

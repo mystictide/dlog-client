@@ -4,11 +4,11 @@ import axios from "axios";
 import { cookies } from "next/headers";
 import { resetSettings, setSettings } from "../user/actions";
 
-const API_URL = "http://localhost:3737/";
-// const API_URL = "https://dapi.herrguller.cc/";
-const cookieStore = cookies();
+// const API_URL = "http://localhost:3737/";
+const API_URL = "https://dapi.herrguller.cc/";
 
 export async function register(data) {
+  const cookieStore = cookies();
   try {
     var config = {
       method: "post",
@@ -34,6 +34,7 @@ export async function register(data) {
 }
 
 export async function login(data) {
+  const cookieStore = cookies();
   try {
     var config = {
       method: "post",
