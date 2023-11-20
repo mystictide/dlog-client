@@ -5,7 +5,7 @@ function SetThemeClient({ theme, handleTheme }) {
   return (
     <>
       {theme == "dark" ? (
-        <span onClick={(e) => handleTheme("light")}>
+        <span className="interactive" onClick={(e) => handleTheme("light")}>
           <MdLightMode />
         </span>
       ) : (

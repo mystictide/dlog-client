@@ -6,7 +6,7 @@ import { BiImageAdd } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-export default function ManageAvatar({ picture }) {
+export default function ManageAvatar({ picture, setActive }) {
   const [image, setImage] = useState(null);
 
   function randomNumberInRange(min, max) {
@@ -28,7 +28,10 @@ export default function ManageAvatar({ picture }) {
   };
 
   return (
-    <div className="avatar">
+    <div
+      className="avatar"
+      onClick={() => (setActive ? setActive((prev) => !prev) : undefined)}
+    >
       <div className="avatar-view">
         <div className="avatar-overlay">
           <input

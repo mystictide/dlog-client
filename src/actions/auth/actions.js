@@ -46,6 +46,10 @@ export async function login(data) {
     };
     var data = await axios(config)
       .then(function (response) {
+        response.data.Settings.picture =
+          "https://dapi.herrguller.cc/static/avatars/user" +
+          response.data.Settings?.picture +
+          "ua-small.jpg";
         setSettings(response.data.Settings);
         delete response.data.Settings;
         cookies().set("auth", JSON.stringify(response.data));

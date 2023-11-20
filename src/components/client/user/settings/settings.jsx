@@ -58,7 +58,7 @@ export default function Settings({ user }) {
         </div>
         <div className="flex-row">
           <div className="settings half-width">
-            <form className="full-width" onSubmit={onEmailSubmit}>
+            <form className="flex-column full-width" onSubmit={onEmailSubmit}>
               <input
                 type="text"
                 id="email"
