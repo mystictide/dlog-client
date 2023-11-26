@@ -1,9 +1,11 @@
+"use server";
+
 import Portfolio from "@/components/server/resume/portfolio";
 import SetTheme from "@/components/server/user/settings/setTheme";
 import Link from "next/link";
 import { TbArrowBack } from "react-icons/tb";
 
-export default function Projects() {
+export default async function Projects() {
   return (
     <div className="content-wrapper">
       <div className="projects">

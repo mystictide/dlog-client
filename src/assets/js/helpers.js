@@ -26,6 +26,18 @@ export function getWithDate(key) {
   return item.value;
 }
 
+export function formatDate(date) {
+  var options = {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+  let date2 = new Date(date);
+  return date2.toLocaleTimeString("en-US", options);
+}
+
 export function formatPrettyURL(string) {
   //slugify
   const a =
@@ -58,10 +70,10 @@ export function buildFilterURL(reqData) {
     url += "&page=1";
   }
   if (reqData.filterModel) {
-    if (reqData.filterModel.genres) {
-      let mapped = reqData.filterModel.genres.map((item) => item.ID);
+    if (reqData.filterModel.categories) {
+      let mapped = reqData.filterModel.categories.map((item) => item.ID);
       let ids = mapped.join(",");
-      url += "&genres=" + ids;
+      url += "&categories=" + ids;
     }
     if (reqData.filterModel.country) {
       url += "&country=" + reqData.filterModel.country;
@@ -71,6 +83,45 @@ export function buildFilterURL(reqData) {
     }
   }
   return url;
+}
+
+export function buildHTMLText(method, selection, body) {
+  let result = "";
+  if (method === "boldify") {
+    result = body.replaceAll(selection, `<b>${selection}</b>`);
+  }
+  if (method === "italify") {
+    result = body.replaceAll(selection, `<i>${selection}</i>`);
+  }
+  if (method === "underscore") {
+    result = body.replaceAll(selection, `<u>${selection}</u>`);
+  }
+  if (method === "headify") {
+    result = body.replaceAll(selection, `<h3>${selection}</h3>`);
+  }
+  if (method === "tinify") {
+    result = body.replaceAll(selection, `<small>${selection}</small>`);
+  }
+  if (method === "linkify") {
+    result = body.replaceAll(selection, `<a href="${selection}">link</a>`);
+  }
+  return result;
+}
+
+export function buildLink(body, url, text) {
+  body += `<a href="${url}">${text}</a>`;
+  return body;
+}
+
+export function buildMedia(mode, body, url) {
+  //0 image 1 video
+  if (mode) {
+    body += `<iframe src="${url}"/>`;
+    return body;
+  } else {
+    body += `<img src="${url}"/>`;
+    return body;
+  }
 }
 
 export function readCookie(cookieStore, name) {

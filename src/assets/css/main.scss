@@ -61,6 +61,7 @@ $flavour-dark: #fce09b;
     -moz-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
     box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
 }
+
 @mixin overlay($light-theme: true) {
     width: 100%;
     min-height: 100%;
@@ -140,18 +141,14 @@ body[data-theme="dark"] {
         color: $light-font;
     }
 }
-
 #root {
     z-index: 1;
     position: relative;
-    overflow: hidden;
-    height: 100%;
+    min-height: 100%;
 }
-
 div[data-lastpass-icon-root] {
     display: none;
 }
-
 a {
     outline: none;
     text-decoration: none;
@@ -161,7 +158,6 @@ a {
         @include transition();
     }
 }
-
 .h-list {
     display: flex;
     flex-wrap: wrap;
@@ -173,7 +169,6 @@ a {
         display: block;
     }
 }
-
 .v-list {
     display: flex;
     flex-direction: column;
@@ -186,7 +181,6 @@ a {
         display: block;
     }
 }
-
 .btn-function {
     cursor: pointer;
     background-color: $flavour-light;
@@ -202,7 +196,27 @@ a {
         background: rgba($flavour-light, 0.7);
     }
 }
-
+.btn-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: darken($color: $flavour-light, $amount: 5);
+    color: $light-font;
+    width: 110px;
+    height: 49.6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    padding: 0;
+    @include transition();
+    &:hover {
+        @include transition();
+        background: rgba($flavour-light, 0.7);
+    }
+}
 .btn-loading {
     background: none;
     border: none;
@@ -215,19 +229,16 @@ a {
     padding: 0;
     margin: 0;
 }
-
 .flex-row {
     display: flex;
     flex-direction: row;
     column-gap: 0.5rem;
 }
-
 .flex-column {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
 }
-
 .full-height {
     height: 100%;
 }
@@ -237,7 +248,9 @@ a {
 .half-width {
     width: 50%;
 }
-
+.align-center {
+    align-items: center;
+}
 .interactive {
     padding: 3px;
     border-radius: 33px;
@@ -257,7 +270,6 @@ a {
 .main-container {
     z-index: 1;
     position: relative;
-    overflow: hidden;
     height: 100%;
 
     .content-wrapper {
@@ -266,17 +278,29 @@ a {
         max-width: 1240px;
 
         .content {
-            width: calc(100% - 315px);
+            width: calc(100% - 350px);
             height: 100%;
             display: flex;
             padding: 20px 10px;
+            margin-bottom: 5rem;
 
             .title {
                 display: flex;
                 height: 45px;
                 align-items: center;
-                padding: 0 15px;
+                column-gap: 0.5rem;
+                padding: 25px 15px;
                 @include light-background();
+
+                svg {
+                    font-size: 1.6rem;
+                    color: $font-light;
+                    opacity: 0.8;
+                    &:hover {
+                        opacity: 1;
+                        cursor: pointer;
+                    }
+                }
             }
 
             .settings {
@@ -289,13 +313,57 @@ a {
                     justify-content: flex-start;
                 }
             }
+
+            .post-manager {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 0;
+                @include light-background();
+
+                form {
+                    justify-content: flex-start;
+                }
+            }
+
+            .main-blog.posts {
+                padding: 15px;
+                @include light-background();
+                .post-container {
+                    padding: 15px;
+                    min-height: 135px;
+                    justify-content: flex-end;
+                    cursor: pointer;
+                    @include transition();
+                    @include light-background();
+                    @include no-select();
+
+                    &:hover {
+                        @include transition();
+                        background: rgba($flavour-light, 0.6);
+                    }
+                    .author {
+                        justify-content: flex-end;
+                        .avatar-view {
+                            width: 37px;
+                            height: 37px;
+                        }
+                    }
+                    .info {
+                        padding: 10px;
+                        margin-right: auto;
+                    }
+                }
+            }
         }
 
         .sidebar {
             width: 350px;
-            height: 100%;
+            height: calc(100vh - 50px);
             padding: 20px 10px;
             display: flex;
+            position: sticky;
+            top: 50px;
             justify-content: center;
             @include light-background();
             .user-sidebar {
@@ -331,6 +399,8 @@ a {
 
     .header {
         height: 50px;
+        position: sticky;
+        top: 0;
         background: rgba($flavour-light, 0.3);
         border-bottom: 2px solid $flavour-light;
 
@@ -550,22 +620,34 @@ form {
     row-gap: 0.6rem;
     font-size: 0.9rem;
     textarea {
-        width: 570px;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
         height: 250px;
-    }
-    textarea.desc {
-        width: 400px;
-        height: 70px;
+        min-height: 250px;
+        max-height: 550px;
+        background: rgba($flavour-light, 0.5);
+        padding: 15px 10px;
+        outline: none;
+        border: none;
+        color: $bg-light;
+        &::placeholder {
+            color: $bg-light;
+            opacity: 0.8;
+        }
+        &::-ms-input-placeholder {
+            color: $bg-light;
+        }
+        &:hover,
+        &:focus {
+            background: rgba($flavour-light, 0.7);
+        }
     }
     .text-editor {
-        display: flex;
-        flex-direction: column;
-        row-gap: 0.6rem;
+        width: 90%;
         button {
-            font-size: 0.69rem;
-            display: inline-block;
-            margin-right: 5px;
-            width: 80px;
+            height: 45px;
+            font-size: 0.79rem;
         }
     }
     input {
@@ -593,8 +675,16 @@ form {
             background: rgba($flavour-light, 0.7);
         }
     }
-    .error {
-        font-size: 0.75rem;
+    select {
+        cursor: pointer;
+        height: 49.6px;
+        width: 90%;
+        padding: 5px 10px;
+        outline: none;
+        border: none;
+        background: rgba($flavour-light, 0.5);
+        font-size: 0.85rem;
+        color: $bg-light;
     }
     .functions {
         width: 100%;
@@ -617,6 +707,9 @@ form {
                 color: $flavour-light;
             }
         }
+    }
+    .error {
+        font-size: 0.75rem;
     }
 }
 
@@ -712,6 +805,13 @@ form {
                     width: 90%;
                 }
             }
+            .author {
+                width: 100%;
+                flex-direction: row;
+                .flex-column {
+                    width: auto;
+                }
+            }
         }
     }
     .main-container .header .nav .nav-user {
@@ -755,6 +855,13 @@ form {
                 }
                 button {
                     width: 90%;
+                }
+            }
+            .author {
+                width: 100%;
+                flex-direction: row;
+                .flex-column {
+                    width: auto;
                 }
             }
         }

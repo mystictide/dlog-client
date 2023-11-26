@@ -1,8 +1,10 @@
+"use server";
+
 import { readCookie } from "@/assets/js/helpers";
 import User from "@/components/client/sidebar/user";
 import { cookies } from "next/headers";
 
-export default function Sidebar() {
+export default async function Sidebar() {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
   const settings = readCookie(cookieStore, "settings");

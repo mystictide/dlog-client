@@ -1,4 +1,6 @@
-export default function Portfolio() {
+"use server";
+
+export default async function Portfolio() {
   return (
     <ul className="h-list">
       <li

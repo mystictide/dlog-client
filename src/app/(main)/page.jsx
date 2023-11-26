@@ -1,3 +1,5 @@
+"use server";
+
 import SetTheme from "@/components/server/user/settings/setTheme";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
@@ -18,7 +20,7 @@ import {
   TbBrandNextjs,
 } from "react-icons/tb";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="full-page">
       <div className="resume">

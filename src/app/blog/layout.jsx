@@ -1,8 +1,8 @@
 import "@/assets/css/main.scss";
 import { readCookie } from "@/assets/js/helpers";
+import ToastUI from "@/components/client/ui/toast";
 import Header from "@/components/server/layout/header";
 import Sidebar from "@/components/server/layout/sidebar";
-import ToastUI from "@/components/ui/toast";
 import { cookies } from "next/headers";
 
 export default function RootLayout({ children }) {

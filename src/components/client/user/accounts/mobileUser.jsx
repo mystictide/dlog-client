@@ -12,7 +12,11 @@ export default function MobileUser({ settings }) {
 
   return (
     <div className="user-sidebar nav-user flex-row">
-      <ManageAvatar picture={settings?.picture} setActive={setActive} />
+      <ManageAvatar
+        viewOnly={true}
+        picture={settings?.picture}
+        setActive={setActive}
+      />
       {active ? (
         <div className="modal-container">
           <div

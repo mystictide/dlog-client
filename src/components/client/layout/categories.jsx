@@ -15,16 +15,19 @@ export default function Categories() {
             <Link href="/blog/c/tech">Tech</Link>
           </li>
           <li>
-            <Link href="/blog/c/tech">Film</Link>
+            <Link href="/blog/c/film">Film</Link>
           </li>
           <li>
             <Link href="/blog/c/music">Music</Link>
           </li>
           <li>
-            <Link href="/blog/c/writing">Writing</Link>
+            <Link href="/blog/c/literature">Literature</Link>
           </li>
           <li>
             <Link href="/blog/c/memes">Memes</Link>
+          </li>
+          <li>
+            <Link href="/blog/c/personal">Personal</Link>
           </li>
         </ul>
       </div>
@@ -51,16 +54,19 @@ export default function Categories() {
                   <Link href="/blog/c/tech">Tech</Link>
                 </li>
                 <li>
-                  <Link href="/blog/c/tech">Film</Link>
+                  <Link href="/blog/c/film">Film</Link>
                 </li>
                 <li>
                   <Link href="/blog/c/music">Music</Link>
                 </li>
                 <li>
-                  <Link href="/blog/c/writing">Writing</Link>
+                  <Link href="/blog/c/literature">Literature</Link>
                 </li>
                 <li>
                   <Link href="/blog/c/memes">Memes</Link>
+                </li>
+                <li>
+                  <Link href="/blog/c/personal">Personal</Link>
                 </li>
               </ul>
             </div>

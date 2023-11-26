@@ -1,4 +1,5 @@
 export const metadata = {
+  metadataBase: new URL('http://localhost:3000'),
   title: {
     default: "FRKN",
     template: "%s / FRKN",
