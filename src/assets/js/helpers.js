@@ -35,7 +35,7 @@ export function formatDate(date) {
     minute: "2-digit",
   };
   let date2 = new Date(date);
-  return date2.toLocaleTimeString("en-US", options);
+  return date2.toLocaleTimeString("en-GB", options);
 }
 
 export function formatPrettyURL(string) {

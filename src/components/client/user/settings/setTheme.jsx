@@ -1,20 +1,26 @@
 "use client";
+
+import { setSettings } from "@/actions/user/actions";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
-function SetThemeClient({ theme, handleTheme }) {
+export default function SetTheme({ theme }) {
+  const handleTheme = async (data) => {
+    console.log(data)
+    let theme = { theme: data };
+    await setSettings(theme);
+  };
+
   return (
     <>
-      {theme == "dark" ? (
-        <span className="interactive" onClick={(e) => handleTheme("light")}>
+      {theme === "dark" ? (
+        <span className="interactive" onClick={() => handleTheme("light")}>
           <MdLightMode />
         </span>
       ) : (
-        <span className="interactive" onClick={(e) => handleTheme("dark")}>
+        <span className="interactive" onClick={() => handleTheme("dark")}>
           <MdDarkMode />
         </span>
       )}
     </>
   );
 }
-
-export default SetThemeClient;

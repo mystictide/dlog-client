@@ -4,6 +4,7 @@ import { logout } from "@/actions/auth/actions";
 import { updateEmail, updatePassword } from "@/actions/user/actions";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { IoReturnDownBack } from "react-icons/io5";
 import { toast } from "react-toastify";
 
 export default function Settings({ user }) {
@@ -54,6 +55,10 @@ export default function Settings({ user }) {
     <div className="content">
       <div className="flex-column full-width">
         <div className="title">
+          <IoReturnDownBack
+            className="interactive"
+            onClick={() => router.push("/blog")}
+          />
           <h3>Account settings</h3>
         </div>
         <div className="flex-row">

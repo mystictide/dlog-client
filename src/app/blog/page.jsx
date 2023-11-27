@@ -15,6 +15,7 @@ export default async function Blog() {
         <h3 className="title">RECENT BLOG POSTS</h3>
         <section className="flex-column main-blog posts">
           <BlogPost user={user} data={recentPosts} />
+          <BlogPost user={user} data={recentPosts} />
         </section>
       </div>
     </div>
