@@ -1,3 +1,6 @@
+import { readCookie } from "@/assets/js/helpers";
+import { cookies } from "next/headers";
+
 export const metadata = {
   metadataBase: new URL('http://localhost:3000'),
   title: {
@@ -10,10 +13,18 @@ export const metadata = {
   author: "Furkan Güler",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = cookies();
+  const settings = readCookie(cookieStore, "settings");
+  const theme = settings
+    ? settings.theme
+      ? settings.theme
+      : "light"
+    : "light";
+
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body data-theme={theme} suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

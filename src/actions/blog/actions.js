@@ -6,8 +6,8 @@ import { cookies } from "next/headers";
 // const API_URL = "http://localhost:3737/";
 const API_URL = "https://dapi.herrguller.cc/";
 
-export async function getPost(id, title) {
-  const query = `?id=${id ?? ""}&title=${decodeURL(title) ?? ""}`;
+export async function getPost(id, title, view) {
+  const query = `?id=${id ?? ""}&title=${decodeURL(title) ?? ""}&view=${view}`;
   try {
     var config = {
       method: "get",

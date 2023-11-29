@@ -7,5 +7,6 @@ import { cookies } from "next/headers";
 export default async function UserSettings() {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
-  return <Settings user={user} />;
+  const settings = readCookie(cookieStore, "settings");
+  return <Settings user={user} settings={settings} />;
 }

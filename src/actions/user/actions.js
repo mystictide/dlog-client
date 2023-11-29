@@ -19,7 +19,25 @@ export async function setSettings(data) {
       : curSettings?.instagram ?? null,
     twitter: data?.twitter ? data.twitter : curSettings?.twitter ?? null,
     linkedin: data?.linkedin ? data.linkedin : curSettings?.linkedin ?? null,
+    youtube: data?.youtube ? data.youtube : curSettings?.youtube ?? null,
     personal: data?.personal ? data.personal : curSettings?.personal ?? null,
+  };
+  cookies().set("settings", JSON.stringify(settings));
+}
+
+export async function setSocials(data) {
+  const cookieStore = cookies();
+  let curSettings = readCookie(cookieStore, "settings") ?? null;
+  let settings = {
+    theme: curSettings?.theme ?? "light",
+    picture: curSettings?.picture ?? null,
+    bio: curSettings?.bio ?? null,
+    facebook: data?.facebook ? data.facebook : null,
+    instagram: data?.instagram ? data.instagram : null,
+    twitter: data?.twitter ? data.twitter : null,
+    linkedin: data?.linkedin ? data.linkedin : curSettings?.linkedin ?? null,
+    youtube: data?.youtube ? data.youtube : null,
+    personal: data?.personal ? data.personal : null,
   };
   cookies().set("settings", JSON.stringify(settings));
 }
@@ -133,6 +151,59 @@ export async function updatePassword(data) {
       })
       .catch(function (error) {
         return false;
+      });
+    return data;
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function updateBio(data) {
+  try {
+    var config = {
+      method: "post",
+      url: API_URL + "user/update/bio",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + data.token,
+      },
+      data: JSON.stringify(data.bio),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        let settings = {
+          bio: response.data,
+        };
+        setSettings(settings);
+        return true;
+      })
+      .catch(function (error) {
+        return error?.response.data;
+      });
+    return data;
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function updateSocials(data) {
+  try {
+    var config = {
+      method: "post",
+      url: API_URL + "user/update/socials",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + data.token,
+      },
+      data: JSON.stringify(data.socials),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        setSocials(response.data);
+        return true;
+      })
+      .catch(function (error) {
+        return error?.response.data;
       });
     return data;
   } catch (error) {

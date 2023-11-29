@@ -5,7 +5,6 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 export default function SetTheme({ theme }) {
   const handleTheme = async (data) => {
-    console.log(data)
     let theme = { theme: data };
     await setSettings(theme);
   };

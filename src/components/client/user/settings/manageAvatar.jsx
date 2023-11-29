@@ -1,6 +1,7 @@
 "use client";
 
 import { manageAvatar } from "@/actions/user/actions";
+import Image from "next/image";
 import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
@@ -50,9 +51,9 @@ export default function ManageAvatar({ viewOnly, picture, setActive }) {
         )}
 
         {image ? (
-          <img src={image} />
+          <Image src={image} width="80" height="80" alt="userAvatar" />
         ) : picture ? (
-          <img src={picture} />
+          <Image src={picture} width="80" height="80" alt="userAvatar" />
         ) : (
           <FaUser className="default" />
         )}

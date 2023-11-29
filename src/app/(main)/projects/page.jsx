@@ -1,11 +1,17 @@
 "use server";
 
+import { readCookie } from "@/assets/js/helpers";
+import SetTheme from "@/components/client/user/settings/setTheme";
 import Portfolio from "@/components/server/resume/portfolio";
-import SetTheme from "@/components/server/user/settings/setTheme";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import { TbArrowBack } from "react-icons/tb";
 
 export default async function Projects() {
+  const cookieStore = cookies();
+  const settings = await readCookie(cookieStore, "settings");
+  const theme = settings?.theme ? settings?.theme : "light";
+
   return (
     <div className="content-wrapper">
       <div className="projects">
@@ -27,7 +33,7 @@ export default async function Projects() {
         </section>
       </div>
       <footer className="theme">
-        <SetTheme />
+        <SetTheme theme={theme} />
       </footer>
     </div>
   );
