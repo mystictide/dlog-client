@@ -2,7 +2,7 @@ import { readCookie } from "@/assets/js/helpers";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL("http://localhost:3000"),
   title: {
     default: "FRKN",
     template: "%s / FRKN",
@@ -24,7 +24,9 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body data-theme={theme} suppressHydrationWarning={true}>{children}</body>
+      <body data-theme={theme} suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   );
 }

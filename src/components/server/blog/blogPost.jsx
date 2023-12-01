@@ -2,7 +2,6 @@
 
 import { formatDate, formatPrettyURL } from "@/assets/js/helpers";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
-import Link from "next/link";
 
 export default async function BlogPost({ user, data }) {
   function createMarkup(body) {
@@ -21,7 +20,7 @@ export default async function BlogPost({ user, data }) {
   return (
     <>
       {data?.map((post) => (
-        <Link href={`/blog/post/${formatPrettyURL(post.Title)}`} key={post.ID}>
+        <a href={`/blog/post/${formatPrettyURL(post.Title)}`} key={post.ID}>
           <div className="post-container flex-column">
             <div className="flex-row">
               <div className="info flex-column">
@@ -38,7 +37,7 @@ export default async function BlogPost({ user, data }) {
             </div>
             {Body(post.Body)}
           </div>
-        </Link>
+        </a>
       ))}
     </>
   );

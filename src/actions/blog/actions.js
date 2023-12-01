@@ -30,10 +30,10 @@ export async function getPost(id, title, view) {
   }
 }
 
-export async function getPostContent(id, title) {
+export async function getPostContent(id) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth") ?? null;
-  const query = `?id=${id ?? ""}&title=${decodeURL(title) ?? ""}`;
+  const query = `?id=${id ?? ""}&title=""}`;
   try {
     if (user) {
       var config = {

@@ -5,7 +5,7 @@ import {
   updateBio,
   updateEmail,
   updatePassword,
-  updateSocials,
+  updateSocials
 } from "@/actions/user/actions";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,12 +19,12 @@ export default function Settings({ user, settings }) {
   const [email, setEmail] = useState(user ? user.Email : "");
   const [bio, setBio] = useState(settings ? settings?.bio : "");
   const [socials, setSocials] = useState({
-    facebook: settings?.facebook ?? "",
-    instagram: settings?.instagram ?? "",
-    linkedin: settings?.linkedin ?? "",
-    twitter: settings?.twitter ?? "",
-    youtube: settings?.youtube ?? "",
-    personal: settings?.personal ?? "",
+    facebook: settings?.facebook ?? null,
+    instagram: settings?.instagram ?? null,
+    linkedin: settings?.linkedin ?? null,
+    twitter: settings?.twitter ?? null,
+    youtube: settings?.youtube ?? null,
+    personal: settings?.personal ?? null,
   });
 
   const onEmailSubmit = async (e) => {
@@ -144,15 +144,16 @@ export default function Settings({ user, settings }) {
           </div>
         </div>
         <div className="full-width settings">
-          <form className="full-width flex-row socials" onSubmit={onSocialsSubmit}>
+          <form
+            className="full-width flex-row socials"
+            onSubmit={onSocialsSubmit}
+          >
             <input
               type="text"
               id="facebook"
               name="facebook"
-              value={socials.facebook.length > 0 ? socials.facebook : ""}
-              placeholder={
-                socials.facebook.length > 0 ? socials.facebook : "Facebook"
-              }
+              value={socials.facebook ?? ""}
+              placeholder={socials.facebook ?? "Facebook"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -164,10 +165,8 @@ export default function Settings({ user, settings }) {
               type="text"
               id="instagram"
               name="instagram"
-              value={socials.instagram.length > 0 ? socials.instagram : ""}
-              placeholder={
-                socials.instagram.length > 0 ? socials.instagram : "Instagram"
-              }
+              value={socials.instagram ?? ""}
+              placeholder={socials.instagram ?? "Instagram"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -179,10 +178,8 @@ export default function Settings({ user, settings }) {
               type="text"
               id="twitter"
               name="twitter"
-              value={socials.twitter.length > 0 ? socials.twitter : ""}
-              placeholder={
-                socials.twitter.length > 0 ? socials.twitter : "Twitter"
-              }
+              value={socials.twitter ?? ""}
+              placeholder={socials.twitter ?? "Twitter"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -194,10 +191,8 @@ export default function Settings({ user, settings }) {
               type="text"
               id="youtube"
               name="youtube"
-              value={socials.youtube.length > 0 ? socials.youtube : ""}
-              placeholder={
-                socials.youtube.length > 0 ? socials.youtube : "YouTube"
-              }
+              value={socials.youtube ?? ""}
+              placeholder={socials.youtube ?? "YouTube"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -209,10 +204,8 @@ export default function Settings({ user, settings }) {
               type="text"
               id="linkedin"
               name="linkedin"
-              value={socials.linkedin.length > 0 ? socials.linkedin : ""}
-              placeholder={
-                socials.linkedin.length > 0 ? socials.linkedin : "LinkedIn"
-              }
+              value={socials.linkedin ?? ""}
+              placeholder={socials.linkedin ?? "LinkedIn"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -224,10 +217,8 @@ export default function Settings({ user, settings }) {
               type="text"
               id="personal"
               name="personal"
-              value={socials.personal.length > 0 ? socials.personal : ""}
-              placeholder={
-                socials.personal.length > 0 ? socials.personal : "Personal"
-              }
+              value={socials.personal ?? ""}
+              placeholder={socials.personal ?? "Personal"}
               onChange={(e) =>
                 setSocials((prevState) => ({
                   ...prevState,
@@ -253,7 +244,9 @@ export default function Settings({ user, settings }) {
         </div>
         <div className="full-width settings">
           <form className="full-width" onSubmit={onEmailSubmit}>
-            <button className="btn-function full-button">Deactivate Account</button>
+            <button className="btn-function full-button">
+              Deactivate Account
+            </button>
           </form>
         </div>
       </div>

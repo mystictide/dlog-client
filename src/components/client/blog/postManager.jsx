@@ -1,6 +1,7 @@
 "use client";
 
 import { managePost } from "@/actions/blog/actions";
+import { formatPrettyURL } from "@/assets/js/helpers";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoReturnDownBackSharp } from "react-icons/io5";
@@ -10,9 +11,9 @@ import TextEditor from "./textEditor";
 export default function PostManager({ user, post }) {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    title: post?.title ?? "",
-    categoryid: post?.categoryid ?? "",
-    body: post?.body ?? "",
+    title: post?.Title ?? "",
+    categoryid: post?.CategoryID ?? "default",
+    body: post?.Body ?? "",
   });
 
   const { title, categoryid, body } = formData;
@@ -37,9 +38,15 @@ export default function PostManager({ user, post }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const postData = { id: post?.id ?? null, title, categoryid, body };
+    const postData = { id: post?.ID ?? null, title, categoryid, body };
     let res = await managePost(postData);
-    toast(res);
+    if (res?.ID) {
+      router.push(`/blog/post/${formatPrettyURL(res.Title)}`);
+    } else {
+      toast(
+        "There was an error submitting, check for empty fields in the form."
+      );
+    }
   };
 
   useEffect(() => {
@@ -53,10 +60,9 @@ export default function PostManager({ user, post }) {
       <form className="flex-column full-width" onSubmit={onSubmit}>
         <div className="flex-column full-width">
           <div className="title">
-            <IoReturnDownBackSharp
-              className="interactive"
-              onClick={() => router.push("/blog")}
-            />
+            <a className="interactive" href="/blog">
+              <IoReturnDownBackSharp />
+            </a>
             <h3>New Post</h3>
           </div>
           <div className="flex-row">
@@ -75,7 +81,7 @@ export default function PostManager({ user, post }) {
                 id="categoryid"
                 name="categoryid"
                 onChange={onChange}
-                defaultValue={"default"}
+                defaultValue={categoryid ?? "default"}
               >
                 <option value="default" disabled>
                   select a category

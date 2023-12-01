@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { BiSolidCategory } from "react-icons/bi";
 
@@ -12,22 +11,22 @@ export default function Categories() {
       <div className="categories">
         <ul className="h-list">
           <li>
-            <Link href="/blog/c/tech">Tech</Link>
+            <a href="/blog/c/tech">Tech</a>
           </li>
           <li>
-            <Link href="/blog/c/film">Film</Link>
+            <a href="/blog/c/film">Film</a>
           </li>
           <li>
-            <Link href="/blog/c/music">Music</Link>
+            <a href="/blog/c/music">Music</a>
           </li>
           <li>
-            <Link href="/blog/c/literature">Literature</Link>
+            <a href="/blog/c/literature">Literature</a>
           </li>
           <li>
-            <Link href="/blog/c/memes">Memes</Link>
+            <a href="/blog/c/memes">Memes</a>
           </li>
           <li>
-            <Link href="/blog/c/personal">Personal</Link>
+            <a href="/blog/c/personal">Personal</a>
           </li>
         </ul>
       </div>
@@ -51,22 +50,22 @@ export default function Categories() {
             <div className="modal-content">
               <ul className="v-list flex-column">
                 <li>
-                  <Link href="/blog/c/tech">Tech</Link>
+                  <a href="/blog/c/tech">Tech</a>
                 </li>
                 <li>
-                  <Link href="/blog/c/film">Film</Link>
+                  <a href="/blog/c/film">Film</a>
                 </li>
                 <li>
-                  <Link href="/blog/c/music">Music</Link>
+                  <a href="/blog/c/music">Music</a>
                 </li>
                 <li>
-                  <Link href="/blog/c/literature">Literature</Link>
+                  <a href="/blog/c/literature">Literature</a>
                 </li>
                 <li>
-                  <Link href="/blog/c/memes">Memes</Link>
+                  <a href="/blog/c/memes">Memes</a>
                 </li>
                 <li>
-                  <Link href="/blog/c/personal">Personal</Link>
+                  <a href="/blog/c/personal">Personal</a>
                 </li>
               </ul>
             </div>

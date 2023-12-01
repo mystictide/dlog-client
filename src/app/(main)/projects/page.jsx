@@ -4,7 +4,6 @@ import { readCookie } from "@/assets/js/helpers";
 import SetTheme from "@/components/client/user/settings/setTheme";
 import Portfolio from "@/components/server/resume/portfolio";
 import { cookies } from "next/headers";
-import Link from "next/link";
 import { TbArrowBack } from "react-icons/tb";
 
 export default async function Projects() {
@@ -17,9 +16,9 @@ export default async function Projects() {
       <div className="projects">
         <section className="header">
           <h1>
-            <Link href="/">
+            <a href="/">
               <TbArrowBack />
-            </Link>{" "}
+            </a>{" "}
             projects portfolio
           </h1>
           <h4>
