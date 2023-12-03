@@ -20,7 +20,7 @@ export default async function BlogPost({ user, data }) {
   return (
     <>
       {data?.map((post) => (
-        <a href={`/blog/post/${formatPrettyURL(post.Title)}`} key={post.ID}>
+        <a href={`/blog/post/${formatPrettyURL(post.Title)}-${post.ID}`} key={post.ID}>
           <div className="post-container flex-column">
             <div className="flex-row">
               <div className="info flex-column">

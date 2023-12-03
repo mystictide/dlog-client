@@ -45,20 +45,30 @@ export function formatPrettyURL(string) {
     "aaaaaaaaaacccddeeeeeeeegghiiiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------";
   const p = new RegExp(a.split("").join("|"), "g");
 
-  return string
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    // .replace(/[^\w-]+/g, "") // Remove all non-word characters
-    .replace(/--+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start of text
-    .replace(/-+$/, ""); // Trim - from end of text
+  return (
+    string
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, "-") // Replace spaces with -
+      .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
+      .replace(/&/g, "-and-") // Replace & with 'and'
+      // .replace(/[^\w-]+/g, "") // Remove all non-word characters
+      .replace(/--+/g, "-") // Replace multiple - with single -
+      .replace(/^-+/, "") // Trim - from start of text
+      .replace(/-+$/, "")
+  ); // Trim - from end of text
 }
 
 export function decodeURL(string) {
   return string.toString().replaceAll("-", " ");
+}
+
+export function decodeTitle(string) {
+  let decoded = {
+    id: /[^-]*$/.exec(string)[0],
+    title: string.substring(0, string.lastIndexOf("-")),
+  };
+  return decoded;
 }
 
 export function buildFilterURL(reqData) {
@@ -104,6 +114,15 @@ export function buildHTMLText(method, selection, body) {
   if (method === "linkify") {
     result = body.replaceAll(selection, `<a href="${selection}">link</a>`);
   }
+  if (method === "image") {
+    result = body.replaceAll(selection, `<img src="${selection}"/>`);
+  }
+  if (method === "video") {
+    result = body.replaceAll(
+      selection,
+      `<video controls><source src="${selection}" type="video/mp4"></video>`
+    );
+  }
   return result;
 }
 
@@ -115,7 +134,7 @@ export function buildLink(body, url, text) {
 export function buildMedia(mode, body, url) {
   //0 image 1 video
   if (mode) {
-    body += `<iframe src="${url}"/>`;
+    body += `<video controls><source src="${url}" type="video/mp4"></video>`;
     return body;
   } else {
     body += `<img src="${url}"/>`;

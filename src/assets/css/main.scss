@@ -225,9 +225,9 @@ a {
     cursor: pointer;
     background-color: darken($color: $flavour-light, $amount: 5);
     color: $light-font;
-    width: 110px;
+    width: 85px;
     height: 49.6px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 600;
     border: none;
     outline: none;
@@ -456,6 +456,12 @@ a {
                     line-height: 1.5em;
                     font-size: 0.95rem;
                     white-space: break-spaces;
+                    img {
+                        width: 100%;
+                    }
+                    video {
+                        width: 100%;
+                    }
                 }
             }
 
@@ -532,6 +538,10 @@ a {
             justify-content: flex-end;
             align-items: center;
             column-gap: 1rem;
+
+            .manage {
+                
+            }
 
             .account {
                 display: flex;
@@ -825,7 +835,7 @@ form {
         max-width: 90%;
         height: 250px;
         min-height: 250px;
-        max-height: 550px;
+        max-height: 500px;
         background: rgba($flavour-light, 0.5);
         padding: 15px 10px;
         outline: none;

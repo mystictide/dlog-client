@@ -1,7 +1,7 @@
 "use server";
 
 import { getPost } from "@/actions/blog/actions";
-import { formatDate, readCookie } from "@/assets/js/helpers";
+import { decodeTitle, formatDate, readCookie } from "@/assets/js/helpers";
 import UserSocials from "@/components/client/ui/userSocials";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
@@ -10,7 +10,8 @@ import { cookies } from "next/headers";
 export default async function View({ params }) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
-  const post = await getPost(params?.id, params?.title, true);
+  const decoded = decodeTitle(params?.title);
+  const post = await getPost(decoded.id, decoded.title, true);
 
   function createMarkup(body) {
     return { __html: body };
@@ -24,7 +25,7 @@ export default async function View({ params }) {
 
   return (
     <div className="content">
-      {post ? (
+      {post?.ID && !post?.error ? (
         <div className="full-width flex-column post-view">
           <Breadcrumb post={post} />
           <h3 className="title">{post.Title}</h3>

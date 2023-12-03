@@ -51,9 +51,21 @@ export default function ManageAvatar({ viewOnly, picture, setActive }) {
         )}
 
         {image ? (
-          <Image src={image} width="80" height="80" alt="userAvatar" />
+          <Image
+            priority={true}
+            src={image}
+            width="80"
+            height="80"
+            alt="userAvatar"
+          />
         ) : picture ? (
-          <Image src={picture} width="80" height="80" alt="userAvatar" />
+          <Image
+            priority={true}
+            src={picture}
+            width="80"
+            height="80"
+            alt="userAvatar"
+          />
         ) : (
           <FaUser className="default" />
         )}

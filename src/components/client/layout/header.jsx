@@ -28,9 +28,14 @@ export default function HeaderClient({ user, settings }) {
       <div className="nav">
         {user ? <MobileUser settings={settings} /> : <AuthClient />}
         {user ? (
-          <a href="/blog/new" className="btn-post">
-            NEW POST
-          </a>
+          <div className="flex-row manage">
+            <a href="/blog/new" className="btn-post">
+              NEW POST
+            </a>
+            <a href="/blog/new/media" className="btn-post">
+              NEW MEDIA
+            </a>
+          </div>
         ) : (
           ""
         )}

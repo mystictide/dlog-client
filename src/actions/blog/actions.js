@@ -33,7 +33,7 @@ export async function getPost(id, title, view) {
 export async function getPostContent(id) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth") ?? null;
-  const query = `?id=${id ?? ""}&title=""}`;
+  const query = `?id=${id ?? ""}`;
   try {
     if (user) {
       var config = {

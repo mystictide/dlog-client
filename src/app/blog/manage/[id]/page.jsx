@@ -10,14 +10,14 @@ export default async function Manage({ params }) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
   const post = await getPostContent(params?.id);
-
+  
   if (user.UID != post?.UserID) {
-    redirect("/blog/post");
+    redirect("/blog/");
   }
 
   return (
     <div className="content">
-      <PostManager user={user} post={post} />
+      <PostManager user={user} post={post} isMedia={post.IsMedia} />
     </div>
   );
 }

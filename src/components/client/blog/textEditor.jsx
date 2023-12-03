@@ -9,6 +9,7 @@ export default function TextEditor({
   selection,
   SetSelection,
   setFormData,
+  isMedia,
 }) {
   const [modalState, setModal] = useState({
     mode: null,
@@ -76,11 +77,21 @@ export default function TextEditor({
   };
 
   const handleMedia = (e, media) => {
-    setModal((prevState) => ({
-      ...prevState,
-      mode: media,
-      state: true,
-    }));
+    e.preventDefault();
+    if (selection) {
+      let result = buildHTMLText(media ? "video" : "image", selection, body);
+      SetSelection(null);
+      setFormData((prevState) => ({
+        ...prevState,
+        body: result,
+      }));
+    } else {
+      setModal((prevState) => ({
+        ...prevState,
+        mode: media,
+        state: true,
+      }));
+    }
   };
 
   const handleMediaSet = () => {
@@ -106,6 +117,14 @@ export default function TextEditor({
     }
   };
 
+  const onMediaChange = (value) => {
+    let result = buildMedia(modalState?.mode, body, value);
+    setFormData((prevState) => ({
+      ...prevState,
+      body: result,
+    }));
+  };
+
   return (
     <>
       {modalState.state ? (
@@ -123,19 +142,30 @@ export default function TextEditor({
           <div className="modal-content">
             <section>
               <div className="flex-column align-center">
-                <input
-                  type="text"
-                  id="url"
-                  name="url"
-                  value={url}
-                  placeholder="enter url"
-                  onChange={(e) =>
-                    setUserInput((prevState) => ({
-                      ...prevState,
-                      [e.target.name]: e.target.value,
-                    }))
-                  }
-                />
+                {isMedia ? (
+                  <input
+                    type="text"
+                    id="url"
+                    name="url"
+                    placeholder="enter url"
+                    onChange={(e) => onMediaChange(e.target.value)}
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    id="url"
+                    name="url"
+                    value={url}
+                    placeholder="enter url"
+                    onChange={(e) =>
+                      setUserInput((prevState) => ({
+                        ...prevState,
+                        [e.target.name]: e.target.value,
+                      }))
+                    }
+                  />
+                )}
+
                 {modalState.mode === "anchor" ? (
                   <input
                     type="text"
@@ -154,22 +184,30 @@ export default function TextEditor({
                   ""
                 )}
                 <div className="functions">
-                  {modalState.mode === "anchor" ? (
-                    <button
-                      type="submit"
-                      className="btn-function"
-                      onClick={() => handleLinkSet()}
-                    >
-                      Add Link
-                    </button>
-                  ) : (
-                    <button
-                      type="submit"
-                      className="btn-function"
-                      onClick={() => handleMediaSet()}
-                    >
+                  {isMedia ? (
+                    <button type="submit" className="btn-function">
                       Add Media
                     </button>
+                  ) : (
+                    <>
+                      {modalState.mode === "anchor" ? (
+                        <button
+                          type="button"
+                          className="btn-function"
+                          onClick={() => handleLinkSet()}
+                        >
+                          Add Link
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn-function"
+                          onClick={() => handleMediaSet()}
+                        >
+                          Add Media
+                        </button>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -180,47 +218,83 @@ export default function TextEditor({
         ""
       )}
 
-      <div className="text-editor flex-row">
-        <button
-          className="btn-function"
-          onClick={(e) => handleTextEdit(e, "headify")}
-        >
-          <h3>header</h3>
-        </button>
-        <button
-          className="btn-function"
-          onClick={(e) => handleTextEdit(e, "tinify")}
-        >
-          <small>small</small>
-        </button>
-        <button
-          className="btn-function"
-          onClick={(e) => handleTextEdit(e, "boldify")}
-        >
-          <b>bold</b>
-        </button>
-        <button
-          className="btn-function"
-          onClick={(e) => handleTextEdit(e, "italify")}
-        >
-          <i>italic</i>
-        </button>
-        <button
-          className="btn-function"
-          onClick={(e) => handleTextEdit(e, "underscore")}
-        >
-          <u>underscore</u>
-        </button>
-        <button className="btn-function" onClick={(e) => handleLink(e)}>
-          link
-        </button>
-        <button className="btn-function" onClick={(e) => handleMedia(e, false)}>
-          image
-        </button>
-        <button className="btn-function" onClick={(e) => handleMedia(e, true)}>
-          video
-        </button>
-      </div>
+      {!isMedia ? (
+        <div className="text-editor flex-row">
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleTextEdit(e, "headify")}
+          >
+            <h3>header</h3>
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleTextEdit(e, "tinify")}
+          >
+            <small>small</small>
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleTextEdit(e, "boldify")}
+          >
+            <b>bold</b>
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleTextEdit(e, "italify")}
+          >
+            <i>italic</i>
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleTextEdit(e, "underscore")}
+          >
+            <u>underscore</u>
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleLink(e)}
+          >
+            link
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleMedia(e, false)}
+          >
+            image
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleMedia(e, true)}
+          >
+            video
+          </button>
+        </div>
+      ) : (
+        <div className="text-editor flex-row">
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleMedia(e, false)}
+          >
+            image
+          </button>
+          <button
+            type="button"
+            className="btn-function"
+            onClick={(e) => handleMedia(e, true)}
+          >
+            video
+          </button>
+        </div>
+      )}
     </>
   );
 }

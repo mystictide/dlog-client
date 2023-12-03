@@ -8,7 +8,7 @@ import { IoReturnDownBackSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import TextEditor from "./textEditor";
 
-export default function PostManager({ user, post }) {
+export default function PostManager({ user, post, isMedia }) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: post?.Title ?? "",
@@ -38,10 +38,18 @@ export default function PostManager({ user, post }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const postData = { id: post?.ID ?? null, title, categoryid, body };
-    let res = await managePost(postData);
-    if (res?.ID) {
-      router.push(`/blog/post/${formatPrettyURL(res.Title)}`);
+    const postData = {
+      id: post?.ID ?? null,
+      title,
+      categoryid,
+      body,
+      ismedia: post?.IsMedia ?? isMedia,
+    };
+    if (title && categoryid && body) {
+      let res = await managePost(postData);
+      if (res?.ID) {
+        router.push(`/blog/post/${formatPrettyURL(res.Title)}-${res.ID}`);
+      }
     } else {
       toast(
         "There was an error submitting, check for empty fields in the form."
@@ -101,22 +109,31 @@ export default function PostManager({ user, post }) {
               selection={selection}
               SetSelection={SetSelection}
               setFormData={setFormData}
+              isMedia={isMedia}
             />
-            <textarea
-              type="text"
-              id="body"
-              name="body"
-              value={body}
-              placeholder="start typing..."
-              onChange={onChange}
-              onMouseUp={(e) => handleTextSelection(e)}
-            />
+            {isMedia ? (
+              ""
+            ) : (
+              <textarea
+                type="text"
+                id="body"
+                name="body"
+                value={body}
+                placeholder="start typing..."
+                onChange={onChange}
+                onMouseUp={(e) => handleTextSelection(e)}
+              />
+            )}
           </div>
-          <div className="full-width post-manager">
-            <button type="submit" className="btn-function">
-              Submit
-            </button>
-          </div>
+          {isMedia ? (
+            ""
+          ) : (
+            <div className="full-width post-manager">
+              <button type="submit" className="btn-function">
+                Submit
+              </button>
+            </div>
+          )}
         </div>
       </form>
     </div>
