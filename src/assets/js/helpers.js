@@ -59,6 +59,19 @@ export function formatPrettyURL(string) {
   ); // Trim - from end of text
 }
 
+export function categoryByName(name) {
+  var Categories = {
+    tech: 1,
+    film: 2,
+    music: 3,
+    literature: 4,
+    memes: 5,
+    personal: 6,
+  };
+
+  return Categories[name];
+}
+
 export function decodeURL(string) {
   return string.toString().replaceAll("-", " ");
 }
@@ -71,25 +84,27 @@ export function decodeTitle(string) {
   return decoded;
 }
 
-export function buildFilterURL(reqData) {
-  let url = "?Keyword=" + reqData.keyword;
-  if (reqData.page > 1) {
-    url += "&page=" + reqData.page;
-  } else {
-    url += "&page=1";
-  }
-  if (reqData.filterModel) {
-    if (reqData.filterModel.categories) {
-      let mapped = reqData.filterModel.categories.map((item) => item.ID);
-      let ids = mapped.join(",");
-      url += "&categories=" + ids;
-    }
-    if (reqData.filterModel.country) {
-      url += "&country=" + reqData.filterModel.country;
-    }
-    if (reqData.filterModel.author) {
-      url += "&author=" + reqData.filterModel.author;
-    }
+export function buildFilter(filterData) {
+  let filter = {
+    keyword: filterData.keyword ? filterData.keyword : null,
+    category: filterData.category ? filterData.category : null,
+    author: filterData.author ? filterData.author : null,
+    page: filterData.page ?? 1,
+    sortby: filterData.sortby ?? "desc",
+    ismedia: filterData.ismedia ? filterData.ismedia : false,
+  };
+  return filter;
+}
+
+export function buildFilterURL(params) {
+  let url = "";
+  if (params) {
+    url += params.page ? `?page=${params.page}` : "?page=1";
+    url += params.keyword ? `&keyword=${params.keyword}` : "&keyword=";
+    url += params.category ? `&category=${params.category}` : "&category=";
+    url += params.author ? `&author=${params.author}` : "&author=";
+    url += params.sortby ? `&sortby=${params.sortby}` : "&sortby=";
+    url += params.ismedia ? `&ismedia=${params.ismedia}` : "&ismedia=";
   }
   return url;
 }

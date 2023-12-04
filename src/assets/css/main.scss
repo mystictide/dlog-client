@@ -540,7 +540,6 @@ a {
             column-gap: 1rem;
 
             .manage {
-                
             }
 
             .account {
@@ -803,6 +802,24 @@ a {
                 left: 31%;
             }
         }
+    }
+}
+
+.pager {
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .pager-info {
+        margin-right: auto;
+        font-weight: 500;
+        font-size: 0.75rem;
+    }
+    .pager-button {
+        @extend .anchor-function;
+        width: auto;
+        padding: 0 7px;
+        height: 25px;
     }
 }
 

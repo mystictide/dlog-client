@@ -2,9 +2,9 @@
 
 import { getPost } from "@/actions/blog/actions";
 import { decodeTitle, formatDate, readCookie } from "@/assets/js/helpers";
-import UserSocials from "@/components/client/ui/userSocials";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
+import UserSocials from "@/components/server/ui/userSocials";
 import { cookies } from "next/headers";
 
 export default async function View({ params }) {

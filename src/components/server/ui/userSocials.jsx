@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import {
   BiLogoFacebookSquare,
@@ -9,7 +9,7 @@ import {
   BiWorld,
 } from "react-icons/bi";
 
-export default function UserSocials({ socials }) {
+export default async function UserSocials({ socials }) {
   return (
     <ul className="h-list">
       {socials.facebook ? (
