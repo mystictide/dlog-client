@@ -2,6 +2,7 @@
 
 import { getPost } from "@/actions/blog/actions";
 import { decodeTitle, formatDate, readCookie } from "@/assets/js/helpers";
+import PostVoting from "@/components/client/blog/postVoting";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
 import UserSocials from "@/components/server/ui/userSocials";
@@ -57,14 +58,16 @@ export default async function View({ params }) {
                   </a>
                 </div>
               ) : (
-                "social icons"
+                ""
               )}
             </section>
           </div>
           <section className="flex-column main-blog posts">
             {Body(post.Body)}
           </section>
-          <section className="flex-row author-functions"></section>
+          <section className="flex-row post-interaction">
+            <PostVoting user={user} post={post} />
+          </section>
         </div>
       ) : (
         "Couldn't find a post with this title."

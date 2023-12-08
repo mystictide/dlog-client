@@ -225,7 +225,7 @@ a {
     cursor: pointer;
     background-color: darken($color: $flavour-light, $amount: 5);
     color: $light-font;
-    width: 85px;
+    width: 87px;
     height: 49.6px;
     font-size: 0.75rem;
     font-weight: 600;
@@ -353,6 +353,23 @@ a {
                 }
             }
 
+            .adv-search {
+                .ismedia {
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    font-size: 0.75rem;
+                    @include no-select();
+                    input {
+                        cursor: pointer;
+                        width: 25px;
+                    }
+                }
+            }
+
             .post-manager {
                 display: flex;
                 justify-content: center;
@@ -463,6 +480,46 @@ a {
                         width: 100%;
                     }
                 }
+                .post-interaction {
+                    .post-voting {
+                        justify-content: flex-end;
+                        .vote {
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            button {
+                                @extend .btn-post;
+                                width: 37px;
+                                height: 32px;
+                                svg {
+                                    font-size: 1.55rem;
+                                }
+                            }
+                            button.up {
+                                color: #8cfabd;
+                                &:hover {
+                                    position: relative;
+                                    bottom: 2px;
+                                    left: 2px;
+                                }
+                            }
+                            button.down {
+                                color: #ff3838;
+                                &:hover {
+                                    position: relative;
+                                    top: 2px;
+                                    right: 2px;
+                                }
+                            }
+                            button.active {
+                                border: 2px dotted $flavour-dark;
+                            }
+                            label {
+                                font-size: 0.75rem;
+                            }
+                        }
+                    }
+                }
             }
 
             .breadcrumb {
@@ -540,6 +597,21 @@ a {
             column-gap: 1rem;
 
             .manage {
+                position: relative;
+                button {
+                    width: 55px;
+                    svg {
+                        font-size: 1.4rem;
+                    }
+                }
+                .manage-functions {
+                    background-color: $flavour-light;
+                    position: absolute;
+                    width: 87px;
+                    top: 50px;
+                    left: -15px;
+                    right: 0px;
+                }
             }
 
             .account {
@@ -625,9 +697,10 @@ a {
             }
 
             .search {
+                position: relative;
                 input {
                     height: 49.6px;
-                    width: 150px;
+                    width: 175px;
                     padding: 5px 10px;
                     outline: none;
                     border: none;
@@ -648,6 +721,27 @@ a {
                     &:focus {
                         @include transition();
                         background: rgba($flavour-light, 0.7);
+                    }
+                }
+                button {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    left: 75%;
+                    width: 45px;
+                    font-size: 1.5rem;
+                    color: darken($color: $bg-light, $amount: 15);
+                    svg {
+                        @include transition();
+                    }
+                    &:hover {
+                        @include transition();
+                        background: $flavour-light;
+                        svg {
+                            @include transition();
+                            font-size: 1.7rem;
+                        }
                     }
                 }
             }
@@ -1067,6 +1161,21 @@ form {
                     }
                 }
             }
+            .adv-search {
+                input,
+                select,
+                button {
+                    width: 100% !important;
+                }
+                .ismedia {
+                    column-gap: 1rem;
+                    width: 100%;
+                    font-size: 1rem;
+                    input {
+                        width: 30px !important;
+                    }
+                }
+            }
         }
     }
     .main-container .header .nav .nav-user {
@@ -1084,6 +1193,11 @@ form {
     }
     .sidebar {
         display: none !important;
+    }
+    .pager {
+        .h-list {
+            flex-direction: row !important;
+        }
     }
 }
 
@@ -1145,6 +1259,21 @@ form {
                     }
                 }
             }
+            .adv-search {
+                input,
+                select,
+                button {
+                    width: 100% !important;
+                }
+                .ismedia {
+                    column-gap: 1rem;
+                    width: 100%;
+                    font-size: 1rem;
+                    input {
+                        width: 30px !important;
+                    }
+                }
+            }
         }
     }
 
@@ -1169,5 +1298,11 @@ form {
 
     .sidebar {
         display: none !important;
+    }
+
+    .pager {
+        .h-list {
+            flex-direction: row !important;
+        }
     }
 }

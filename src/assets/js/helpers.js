@@ -87,11 +87,14 @@ export function decodeTitle(string) {
 export function buildFilter(filterData) {
   let filter = {
     keyword: filterData.keyword ? filterData.keyword : null,
-    category: filterData.category ? filterData.category : null,
+    category: filterData.category ? filterData.category : 0,
     author: filterData.author ? filterData.author : null,
     page: filterData.page ?? 1,
     sortby: filterData.sortby ?? "desc",
-    ismedia: filterData.ismedia ? filterData.ismedia : false,
+    ismedia: filterData.ismedia ? JSON.parse(filterData.ismedia) : false,
+    isadvanced: filterData.isadvanced
+      ? JSON.parse(filterData.isadvanced)
+      : false,
   };
   return filter;
 }
