@@ -2,13 +2,15 @@
 
 import { getPost } from "@/actions/blog/actions";
 import { decodeTitle, formatDate, readCookie } from "@/assets/js/helpers";
+import CommentManager from "@/components/client/blog/commentManager";
 import PostVoting from "@/components/client/blog/postVoting";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
+import Comments from "@/components/server/blog/comments";
 import UserSocials from "@/components/server/ui/userSocials";
 import { cookies } from "next/headers";
 
-export default async function View({ params }) {
+export default async function View({ params, searchParams }) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
   const decoded = decodeTitle(params?.title);
@@ -65,8 +67,10 @@ export default async function View({ params }) {
           <section className="flex-column main-blog posts">
             {Body(post.Body)}
           </section>
-          <section className="flex-row post-interaction">
+          <section className="flex-column post-interaction">
             <PostVoting user={user} post={post} />
+            <CommentManager post={post} />
+            <Comments user={user} post={post} searchParams={searchParams} />
           </section>
         </div>
       ) : (

@@ -185,3 +185,30 @@ export async function manageCommentVote(commentid, vote) {
     return true;
   }
 }
+
+export async function filterComments(filter) {
+  const cookieStore = cookies();
+  const user = readCookie(cookieStore, "auth") ?? null;
+  try {
+    var config = {
+      method: "post",
+      url: API_URL + "blog/filter/comments",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + user?.Token,
+      },
+      data: filter,
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        let err = { error: true, message: error?.response.data };
+        return err;
+      });
+    return data;
+  } catch (error) {
+    return true;
+  }
+}

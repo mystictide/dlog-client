@@ -382,6 +382,15 @@ a {
                 }
             }
 
+            .comment-manager {
+                @extend .post-manager;
+                textarea {
+                    height: 120px;
+                    min-height: 120px;
+                    max-height: 300px;
+                }
+            }
+
             .main-blog.posts {
                 padding: 15px;
                 @include light-background();
@@ -437,6 +446,42 @@ a {
                         i,
                         u {
                             text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            .main-blog.comments {
+                padding: 15px;
+                @include light-background();
+                .comment-container {
+                    .author {
+                        margin: 0;
+                        .avatar-view {
+                            width: 45px;
+                            height: 45px;
+                        }
+                    }
+                    .comment-body {
+                        padding: 5px 5px 5px 52px;
+                        line-height: 1.5em;
+                        font-size: 0.85rem;
+                        white-space: break-spaces;
+                    }
+                    .comment-voting {
+                        @extend .post-voting;
+                        margin-left: auto;
+                        .vote {
+                            button {
+                                width: 21px !important;
+                                height: 20px !important;
+                                svg {
+                                    font-size: 1.1rem !important;
+                                }
+                            }
+                            label {
+                                font-size: 0.65rem !important;
+                            }
                         }
                     }
                 }
@@ -499,16 +544,14 @@ a {
                                 color: #8cfabd;
                                 &:hover {
                                     position: relative;
-                                    bottom: 2px;
-                                    left: 2px;
+                                    background-color: lighten($color: $flavour-light, $amount: 5);
                                 }
                             }
                             button.down {
                                 color: #ff3838;
                                 &:hover {
                                     position: relative;
-                                    top: 2px;
-                                    right: 2px;
+                                    background-color: lighten($color: $flavour-light, $amount: 5);
                                 }
                             }
                             button.active {

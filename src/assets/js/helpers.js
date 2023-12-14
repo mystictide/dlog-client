@@ -86,6 +86,7 @@ export function decodeTitle(string) {
 
 export function buildFilter(filterData) {
   let filter = {
+    id: filterData.id ? filterData.id : 0,
     keyword: filterData.keyword ? filterData.keyword : null,
     category: filterData.category ? filterData.category : 0,
     author: filterData.author ? filterData.author : null,
