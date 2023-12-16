@@ -6,6 +6,31 @@ export default async function Portfolio() {
       <li
         className="project-box"
         style={{
+          backgroundImage: `url("https://i.imgur.com/Jxgbfb0.png")`,
+        }}
+      >
+        <span>Blog</span>
+        <div className="actions">
+          <a href="https://herrguller.cc/blog/" target="_blank">
+            Live
+          </a>
+          <a
+            href="https://github.com/mystictide/dlog-client"
+            target="_blank"
+          >
+            Front-end
+          </a>
+          <a
+            href="https://github.com/mystictide/dlog-server"
+            target="_blank"
+          >
+            Back-end
+          </a>
+        </div>
+      </li>
+      <li
+        className="project-box"
+        style={{
           backgroundImage: `url("https://i.imgur.com/bKoQwCZ.png")`,
         }}
       >

@@ -3,18 +3,19 @@
 import { formatDate, formatPrettyURL } from "@/assets/js/helpers";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 
-export default async function BlogPost({ user, data }) {
-  function createMarkup(body) {
-    let text = body.substring(0, 445) + "...";
+export default async function BlogPost({ data }) {
+  function createTitle(title) {
+    let text = title.length >= 56 ? title.substring(0, 56) + "..." : title;
     return { __html: text };
   }
+  function Title(title) {
+    return <h3 dangerouslySetInnerHTML={createTitle(title)} />;
+  }
   function Body(body) {
-    return (
-      <div
-        className="post-preview"
-        dangerouslySetInnerHTML={createMarkup(body)}
-      />
-    );
+    if (body === null || body === "") return false;
+    else body = body.toString();
+    let text = body.replace(/(<([^>]+)>)/gi, "");
+    return text.length >= 445 ? text.substring(0, 445) + "..." : text;
   }
 
   return (
@@ -27,7 +28,7 @@ export default async function BlogPost({ user, data }) {
           <div className="post-container flex-column">
             <div className="flex-row">
               <div className="info flex-column">
-                <h3>{post.Title}</h3>
+                {Title(post.Title)}
                 <h6>{post.Category}</h6>
               </div>
               <div className="author flex-row">
@@ -38,7 +39,7 @@ export default async function BlogPost({ user, data }) {
                 </div>
               </div>
             </div>
-            {Body(post.Body)}
+            <div className="post-preview">{Body(post.Body)}</div>
           </div>
         </a>
       ))}

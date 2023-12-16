@@ -1,21 +1,21 @@
 "use server";
 
 import { filterPosts, getRecentPosts } from "@/actions/main/actions";
-import { buildFilter, readCookie } from "@/assets/js/helpers";
+import { buildFilter } from "@/assets/js/helpers";
 import AdvancedSearch from "@/components/client/ui/advSearch";
+import BlogMedia from "@/components/server/blog/blogMedia";
 import BlogPost from "@/components/server/blog/blogPost";
 import Pager from "@/components/server/ui/pager";
-import { cookies } from "next/headers";
 
 export default async function Blog({ searchParams }) {
-  const cookieStore = cookies();
-  const user = readCookie(cookieStore, "auth");
   let recentPosts = null;
+  let recentMedia = null;
   let searchResults = null;
   let filter = null;
 
   if (Object.keys(searchParams).length < 1) {
-    recentPosts = await getRecentPosts();
+    recentPosts = await getRecentPosts(false);
+    recentMedia = await getRecentPosts(true);
   } else {
     filter = buildFilter({
       keyword: searchParams.keyword,
@@ -31,12 +31,16 @@ export default async function Blog({ searchParams }) {
 
   return (
     <>
-      {recentPosts ? (
+      {recentPosts && recentMedia ? (
         <div className="content">
           <div className="full-width flex-column">
             <h3 className="title">RECENT BLOG POSTS</h3>
             <section className="flex-column main-blog posts">
-              <BlogPost user={user} data={recentPosts} />
+              <BlogPost data={recentPosts} />
+            </section>
+            <h3 className="title">RECENT MEDIA</h3>
+            <section className="flex-row main-blog media">
+              <BlogMedia data={recentMedia} />
             </section>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { readCookie } from "@/assets/js/helpers";
 import SetTheme from "@/components/client/user/settings/setTheme";
 import Portfolio from "@/components/server/resume/portfolio";
 import { cookies } from "next/headers";
-import { TbArrowBack } from "react-icons/tb";
+import { IoReturnDownBackSharp } from "react-icons/io5";
 
 export default async function Projects() {
   const cookieStore = cookies();
@@ -17,7 +17,7 @@ export default async function Projects() {
         <section className="header">
           <h1>
             <a href="/">
-              <TbArrowBack />
+              <IoReturnDownBackSharp />
             </a>{" "}
             projects portfolio
           </h1>

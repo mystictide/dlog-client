@@ -5,14 +5,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function CommentManager({ post }) {
+export default function CommentManager({ post, comment }) {
   const router = useRouter();
   const [formData, setFormData] = useState({
+    id: comment?.ID ?? "",
     postid: post.ID,
-    body: "",
+    body: comment?.Body ?? "",
   });
 
-  const { postid, body } = formData;
+  const { id, postid, body } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -24,6 +25,7 @@ export default function CommentManager({ post }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     const commentData = {
+      id,
       postid,
       body,
     };

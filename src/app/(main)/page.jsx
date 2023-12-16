@@ -4,7 +4,7 @@ import { readCookie } from "@/assets/js/helpers";
 import SetTheme from "@/components/client/user/settings/setTheme";
 import { cookies } from "next/headers";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaCss3Alt, FaNode, FaReact, FaSass } from "react-icons/fa";
+import { FaBlog, FaCss3Alt, FaNode, FaReact, FaSass } from "react-icons/fa";
 import {
   SiDotnet,
   SiExpress,
@@ -67,8 +67,8 @@ export default async function Home() {
           <a target="_blank" href="https://github.com/mystictide">
             <BsGithub />
           </a>
-          <a target="_blank" href="/blog">
-            blog
+          <a className="blog" target="_blank" href="/blog">
+            <FaBlog />
           </a>
           <a target="_blank" href="https://www.linkedin.com/in/furkan-glr">
             <BsLinkedin />

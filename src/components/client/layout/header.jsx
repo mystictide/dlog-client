@@ -40,6 +40,9 @@ export default function HeaderClient({ user, settings }) {
   return (
     <div className={`header ${scrolling}`}>
       <div className="nav">
+        <h6>
+          <a href="/blog">Work in progress</a>
+        </h6>
         {user ? <MobileUser settings={settings} /> : <AuthClient />}
         {user ? (
           <div className="flex-row manage">

@@ -55,11 +55,18 @@ $flavour-dark: #fce09b;
     outline: inherit;
 }
 
-@mixin light-background() {
-    background: rgba($flavour-light, 0.4);
-    -webkit-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
-    box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
+@mixin light-background($light-theme: true) {
+    @if $light-theme {
+        background: rgba($flavour-light, 0.1);
+        -webkit-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
+        box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1);
+    } @else {
+        background: rgba($flavour-light, 0.4) !important;
+        -webkit-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1) !important;
+        -moz-box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1) !important;
+        box-shadow: 0px 4px 20px -11px rgba(66, 68, 90, 1) !important;
+    }
 }
 
 @mixin overlay($light-theme: true) {
@@ -144,6 +151,45 @@ body[data-theme="dark"] {
         z-index: 1;
         background: darken($flavour-light, 10);
     }
+    .post-manager {
+        @include light-background($light-theme: false);
+    }
+    .main-blog.comments {
+        @include light-background($light-theme: false);
+    }
+    .main-blog.posts {
+        @include light-background($light-theme: false);
+        .post-container {
+            @include light-background($light-theme: false);
+            &:hover {
+                background: rgba($flavour-light, 0.6) !important;
+            }
+        }
+    }
+    .main-blog.media {
+        @include light-background($light-theme: false);
+        .media-container {
+            @include light-background($light-theme: false);
+            &:hover {
+                background: rgba($flavour-light, 0.6) !important;
+            }
+        }
+    }
+    .title {
+        @include light-background($light-theme: false);
+    }
+    .sidebar {
+        @include light-background($light-theme: false);
+    }
+    .interactive {
+        &:hover {
+            @include transition();
+            background-color: $flavour-light;
+        }
+    }
+    .settings {
+        @include light-background($light-theme: false);
+    }
 }
 #root {
     z-index: 1;
@@ -197,6 +243,7 @@ a {
     text-align: center;
     font-size: 0.7rem;
     @include transition();
+    @include no-select();
     &:hover {
         @include transition();
         background: rgba($flavour-light, 0.7);
@@ -212,6 +259,7 @@ a {
     outline: none;
     padding: 0;
     @include transition();
+    @include no-select();
     &:hover {
         @include transition();
         background: rgba($flavour-light, 0.7);
@@ -233,6 +281,7 @@ a {
     outline: none;
     padding: 0;
     @include transition();
+    @include no-select();
     &:hover {
         @include transition();
         background: rgba($flavour-light, 0.7);
@@ -278,7 +327,7 @@ a {
     @include transition();
     &:hover {
         @include transition();
-        background-color: $flavour-light;
+        background-color: $flavour-dark;
     }
 
     svg {
@@ -310,8 +359,8 @@ a {
                 height: 45px;
                 align-items: center;
                 column-gap: 0.5rem;
-                padding: 25px 15px;
-                @include light-background();
+                padding: 35px 20px;
+                @include light-background($light-theme: true);
 
                 svg {
                     font-size: 1.6rem;
@@ -328,7 +377,7 @@ a {
                 display: flex;
                 justify-content: center;
                 padding: 15px;
-                @include light-background();
+                @include light-background($light-theme: true);
 
                 form {
                     justify-content: flex-start;
@@ -375,7 +424,7 @@ a {
                 justify-content: center;
                 align-items: center;
                 padding: 15px 0;
-                @include light-background();
+                @include light-background($light-theme: true);
 
                 form {
                     justify-content: flex-start;
@@ -393,24 +442,25 @@ a {
 
             .main-blog.posts {
                 padding: 15px;
-                @include light-background();
+                @include light-background($light-theme: true);
                 .post-container {
                     padding: 15px;
                     min-height: 135px;
                     justify-content: flex-start;
                     cursor: pointer;
                     @include transition();
-                    @include light-background();
+                    @include light-background($light-theme: true);
                     @include no-select();
 
                     &:hover {
                         @include transition();
-                        background: rgba($flavour-light, 0.6);
+                        background: rgba($flavour-light, 0.2);
                     }
                     .author {
                         justify-content: flex-end;
                         align-items: center;
                         height: 100%;
+                        @include no-select();
                         .avatar-view {
                             width: 37px;
                             height: 37px;
@@ -422,6 +472,7 @@ a {
                     .info {
                         padding: 10px;
                         margin-right: auto;
+                        overflow: hidden;
                     }
                     .post-preview {
                         opacity: 0.85;
@@ -451,11 +502,83 @@ a {
                 }
             }
 
+            .main-blog.media {
+                padding: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                row-gap: 0.5rem;
+                @include light-background($light-theme: true);
+                a {
+                    width: 49%;
+                }
+                .media-container {
+                    height: 475px;
+                    justify-content: flex-start;
+                    row-gap: 0;
+                    cursor: pointer;
+                    @include transition();
+                    @include light-background($light-theme: true);
+                    @include no-select();
+
+                    &:hover {
+                        @include transition();
+                        background: rgba($flavour-light, 0.2);
+                    }
+                    .author {
+                        padding: 10px 25px;
+                        justify-content: center;
+                        align-items: center;
+                        @include no-select();
+                        .avatar-view {
+                            width: 37px;
+                            height: 37px;
+                        }
+                        .flex-column {
+                            row-gap: 0.25rem;
+                        }
+                    }
+                    .info {
+                        padding: 12px 18px;
+                        margin-right: auto;
+                        h3 {
+                            font-size: 1rem;
+                        }
+                    }
+                    .media-preview {
+                        opacity: 0.85;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                        }
+                        iframe {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                        }
+                        b,
+                        small {
+                            font-weight: 500;
+                            font-size: 0.85rem;
+                        }
+                        a,
+                        i,
+                        u {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
             .main-blog.comments {
                 padding: 15px;
-                @include light-background();
+                @include light-background($light-theme: true);
                 .comment-container {
-                    .author {
+                    .author {@include no-select();
                         margin: 0;
                         .avatar-view {
                             width: 45px;
@@ -492,6 +615,7 @@ a {
                     justify-content: flex-start;
                     align-items: center;
                     margin: 15px 0 15px 10px;
+                    @include no-select();
                     .avatar {
                         .avatar-view {
                             width: 57px;
@@ -529,6 +653,7 @@ a {
                     .post-voting {
                         justify-content: flex-end;
                         .vote {
+                            @include no-select();
                             justify-content: center;
                             align-items: center;
                             text-align: center;
@@ -590,7 +715,7 @@ a {
             position: sticky;
             top: 50px;
             justify-content: center;
-            @include light-background();
+            @include light-background($light-theme: true);
             .user-sidebar {
                 justify-content: flex-start;
                 height: 90px;
@@ -598,6 +723,7 @@ a {
                 align-items: center;
                 width: 85%;
                 margin: 0 auto;
+                @include no-select();
                 .profile {
                     row-gap: 0.6rem;
                     width: calc(100% - 80px);
@@ -741,6 +867,7 @@ a {
 
             .search {
                 position: relative;
+                @include no-select();
                 input {
                     height: 49.6px;
                     width: 175px;
@@ -792,7 +919,7 @@ a {
     }
     .header.scrolling {
         z-index: 1;
-        background: lighten($flavour-light, 15);
+        background: lighten($flavour-light, 20);
     }
 }
 
@@ -1146,7 +1273,7 @@ form {
 
 @media (max-width: 959px) {
     .main-container .content-wrapper {
-        width: 85%;
+        width: 95%;
         .content {
             width: 100%;
             .half-width {
@@ -1219,6 +1346,9 @@ form {
                     }
                 }
             }
+            .main-blog.media a {
+                width: 100%;
+            }
         }
     }
     .main-container .header .nav .nav-user {
@@ -1246,7 +1376,7 @@ form {
 
 @media (max-width: 640px) {
     .main-container .content-wrapper {
-        width: 90%;
+        width: 100%;
         .content {
             width: 100%;
             margin-bottom: 5rem;
@@ -1316,6 +1446,9 @@ form {
                         width: 30px !important;
                     }
                 }
+            }
+            .main-blog.media a {
+                width: 100%;
             }
         }
     }

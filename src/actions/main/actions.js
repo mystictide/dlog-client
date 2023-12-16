@@ -4,11 +4,11 @@ import axios from "axios";
 // const API_URL = "http://localhost:3737/";
 const API_URL = "https://dapi.herrguller.cc/";
 
-export async function getRecentPosts() {
+export async function getRecentPosts(isMedia) {
   try {
     var config = {
       method: "get",
-      url: API_URL + "main/recent/post",
+      url: API_URL + `main/recent/post?isMedia=${isMedia}`,
       headers: {
         "Content-Type": "application/json",
       },
