@@ -45,6 +45,15 @@ $flavour-dark: #fce09b;
     user-select: none;
 }
 
+@mixin reset-select {
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 @mixin button-reset {
     background: none;
     color: inherit;
@@ -206,6 +215,14 @@ a {
     @include transition();
     &:hover {
         @include transition();
+    }
+}
+a.user-link {
+    @include transition();
+    @include reset-select();
+    &:hover {
+        @include transition();
+        text-decoration: underline;
     }
 }
 .h-list {
@@ -578,7 +595,8 @@ a {
                 padding: 15px;
                 @include light-background($light-theme: true);
                 .comment-container {
-                    .author {@include no-select();
+                    .author {
+                        @include no-select();
                         margin: 0;
                         .avatar-view {
                             width: 45px;
@@ -691,6 +709,7 @@ a {
             }
 
             .breadcrumb {
+                @include no-select();
                 align-items: center;
                 column-gap: 0.3rem;
                 a,

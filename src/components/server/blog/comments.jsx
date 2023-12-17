@@ -28,7 +28,14 @@ export default async function Comments({ user, post, searchParams }) {
                       picture={comment.AuthorImage}
                     />
                     <div className="flex-column">
-                      <h5>{comment.Author}</h5>
+                      <h5>
+                        <a
+                          className="user-link"
+                          href={`/user/${comment.Author}`}
+                        >
+                          {comment.Author}
+                        </a>
+                      </h5>
                       <h6>{formatDate(comment.Date)}</h6>
                     </div>
                     <CommentVoting user={user} comment={comment} />

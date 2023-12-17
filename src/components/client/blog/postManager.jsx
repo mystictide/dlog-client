@@ -71,7 +71,7 @@ export default function PostManager({ user, post, isMedia }) {
             <a className="interactive" href="/blog">
               <IoReturnDownBackSharp />
             </a>
-            <h3>New Post</h3>
+            <h3>{isMedia ? "New Media" : "New Post"}</h3>
           </div>
           <div className="flex-row">
             <div className="post-manager half-width">

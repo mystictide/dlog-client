@@ -8,7 +8,9 @@ export default function User({ user, settings }) {
     <div className="user-sidebar flex-row">
       <ManageAvatar viewOnly={false} picture={settings?.picture} />
       <div className="profile flex-column">
-        <h4>{user.Username}</h4>
+        <h4>
+          <a className="user-link" href={`/user/${user.Username}`}>{user.Username}</a>
+        </h4>
         <div className="flex-row">
           <a className="anchor-function" href={"/user/settings"}>
             Edit profile

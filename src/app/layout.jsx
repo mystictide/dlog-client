@@ -4,8 +4,8 @@ import { cookies } from "next/headers";
 export const metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
-    default: "FRKN",
-    template: "%s / FRKN",
+    default: "dlog",
+    template: "%s / dlog",
   },
   description: "Just a blog",
   keywords:

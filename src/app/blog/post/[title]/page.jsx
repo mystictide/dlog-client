@@ -9,12 +9,24 @@ import Breadcrumb from "@/components/server/blog/breadcrumb";
 import Comments from "@/components/server/blog/comments";
 import UserSocials from "@/components/server/ui/userSocials";
 import { cookies } from "next/headers";
+import { cache } from "react";
+
+const cachedPost = cache(async (params) => {
+  const decoded = decodeTitle(params?.title);
+  return await getPost(decoded.id, decoded.title, true);
+});
+
+export async function generateMetadata({ params }) {
+  const post = await cachedPost(params);
+  return {
+    title: post.Title ?? "404",
+  };
+}
 
 export default async function View({ params, searchParams }) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
-  const decoded = decodeTitle(params?.title);
-  const post = await getPost(decoded.id, decoded.title, true);
+  const post = await cachedPost(params);
 
   function createMarkup(body) {
     return { __html: body };
@@ -35,7 +47,11 @@ export default async function View({ params, searchParams }) {
           <div className="author flex-row">
             <ManageAvatar viewOnly={true} picture={post.AuthorImage} />
             <section className="flex-column">
-              <h5>{post.Author}</h5>
+              <h5>
+                <a className="user-link" href={`/user/${post.Author}`}>
+                  {post.Author}
+                </a>
+              </h5>
               <h6>posted on {formatDate(post.Date)}</h6>
               {post.UpdateDate ? (
                 <h6>updated on {formatDate(post.UpdateDate)}</h6>

@@ -5,6 +5,12 @@ import { buildFilter, categoryByName } from "@/assets/js/helpers";
 import BlogPost from "@/components/server/blog/blogPost";
 import Pager from "@/components/server/ui/pager";
 
+export async function generateMetadata({ params }) {
+  return {
+    title: params?.name,
+  };
+}
+
 export default async function Category({ params, searchParams }) {
   const categoryID = categoryByName(params?.name);
   const filter = buildFilter({

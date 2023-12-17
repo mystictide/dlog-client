@@ -13,56 +13,80 @@ export default async function UserSocials({ socials }) {
   return (
     <ul className="h-list">
       {socials.facebook ? (
-        <li className="interactive">
-          <a href={socials?.facebook}>
-            <BiLogoFacebookSquare />
-          </a>
-        </li>
+        socials.facebook.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.facebook}>
+              <BiLogoFacebookSquare />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
       {socials.instagram ? (
-        <li className="interactive">
-          <a href={socials?.instagram}>
-            <BiLogoInstagramAlt />
-          </a>
-        </li>
+        socials.instagram.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.instagram}>
+              <BiLogoInstagramAlt />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
       {socials.twitter ? (
-        <li className="interactive">
-          <a href={socials?.twitter}>
-            <BiLogoTwitter />
-          </a>
-        </li>
+        socials.twitter.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.twitter}>
+              <BiLogoTwitter />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
       {socials.linkedin ? (
-        <li className="interactive">
-          <a href={socials?.linkedin}>
-            <BiLogoLinkedinSquare />
-          </a>
-        </li>
+        socials.linkedin.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.linkedin}>
+              <BiLogoLinkedinSquare />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
       {socials.youtube ? (
-        <li className="interactive">
-          <a href={socials?.youtube}>
-            <BiLogoYoutube />
-          </a>
-        </li>
+        socials.youtube.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.youtube}>
+              <BiLogoYoutube />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
       {socials.personal ? (
-        <li className="interactive">
-          <a href={socials?.personal}>
-            <BiWorld />
-          </a>
-        </li>
+        socials.personal.startsWith("https") ? (
+          <li className="interactive">
+            <a href={socials?.personal}>
+              <BiWorld />
+            </a>
+          </li>
+        ) : (
+          ""
+        )
       ) : (
         ""
       )}
