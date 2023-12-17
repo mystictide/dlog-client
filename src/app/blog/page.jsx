@@ -31,7 +31,7 @@ export default async function Blog({ searchParams }) {
 
   return (
     <>
-      {recentPosts && recentMedia ? (
+      {recentPosts?.length > 0 && recentMedia?.length > 0 ? (
         <div className="content">
           <div className="full-width flex-column">
             <h3 className="title">RECENT BLOG POSTS</h3>
@@ -61,11 +61,11 @@ export default async function Blog({ searchParams }) {
       ) : (
         ""
       )}
-      {!recentPosts && !searchResults?.data?.length ? (
+      {!recentPosts?.length > 0 && !searchResults?.data?.length ? (
         <div className="content">
           <div className="full-width flex-column">
             <h3 className="title">Oops!</h3>
-            <AdvancedSearch filter={filter} />
+            {filter ? <AdvancedSearch filter={filter} /> : ""}
             <h5>Couldn't find anything.</h5>
           </div>
         </div>

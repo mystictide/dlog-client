@@ -1,5 +1,6 @@
 "use server";
 
+import { viewUser } from "@/actions/main/actions";
 import { decodeURL, readCookie } from "@/assets/js/helpers";
 import { cookies } from "next/headers";
 
@@ -14,7 +15,7 @@ export default async function UserProfile({ params }) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth");
   const decodedUsername = decodeURL(params?.username);
-  // const post = await getPost(decoded.id, decoded.title, true);
+  const profile = await viewUser(decodedUsername);
 
   return (
     <div className="content">
