@@ -6,6 +6,12 @@ import Portfolio from "@/components/server/resume/portfolio";
 import { cookies } from "next/headers";
 import { IoReturnDownBackSharp } from "react-icons/io5";
 
+export async function generateMetadata() {
+  return {
+    title: "portfolio",
+  };
+}
+
 export default async function Projects() {
   const cookieStore = cookies();
   const settings = await readCookie(cookieStore, "settings");

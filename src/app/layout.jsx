@@ -2,7 +2,7 @@ import { readCookie } from "@/assets/js/helpers";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://herrguller.cc"),
   title: {
     default: "dlog",
     template: "%s / dlog",

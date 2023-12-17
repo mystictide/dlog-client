@@ -21,6 +21,12 @@ import {
   TbBrandNextjs,
 } from "react-icons/tb";
 
+export async function generateMetadata() {
+  return {
+    title: "FRKN",
+  };
+}
+
 export default async function Home() {
   const cookieStore = cookies();
   const settings = await readCookie(cookieStore, "settings");
