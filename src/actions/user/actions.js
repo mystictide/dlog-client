@@ -210,3 +210,57 @@ export async function updateSocials(data) {
     return false;
   }
 }
+
+export async function manageFollow(target) {
+  const cookieStore = cookies();
+  const user = readCookie(cookieStore, "auth") ?? null;
+  try {
+    var config = {
+      method: "post",
+      url: API_URL + `user/follow`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + user?.Token,
+      },
+      data: JSON.stringify(target),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        let err = { error: true, message: error?.response.data };
+        return err;
+      });
+    return data;
+  } catch (error) {
+    return true;
+  }
+}
+
+export async function manageBlock(target) {
+  const cookieStore = cookies();
+  const user = readCookie(cookieStore, "auth") ?? null;
+  try {
+    var config = {
+      method: "post",
+      url: API_URL + `user/block`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + user?.Token,
+      },
+      data: JSON.stringify(target),
+    };
+    var data = await axios(config)
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        let err = { error: true, message: error?.response.data };
+        return err;
+      });
+    return data;
+  } catch (error) {
+    return true;
+  }
+}

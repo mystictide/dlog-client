@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 
 export default function ManageAvatar({ viewOnly, picture, setActive }) {
   const [image, setImage] = useState(null);
+  const [fallback, setFallback] = useState(false);
 
   function randomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -50,7 +51,9 @@ export default function ManageAvatar({ viewOnly, picture, setActive }) {
           </div>
         )}
 
-        {image ? (
+        {fallback ? (
+          <FaUser className="default" />
+        ) : image ? (
           <Image
             priority={true}
             src={image}
@@ -65,6 +68,9 @@ export default function ManageAvatar({ viewOnly, picture, setActive }) {
             width="80"
             height="80"
             alt="userAvatar"
+            onError={() => {
+              setFallback(true);
+            }}
           />
         ) : (
           <FaUser className="default" />
