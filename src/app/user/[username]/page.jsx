@@ -52,7 +52,7 @@ export default async function UserProfile({ params }) {
               <h6>Followers</h6>
             </span>
           </section>
-          {user?.UID !== profile.UID ? (
+          {user && user?.UID !== profile.UID ? (
             <UserInteractions
               user={user}
               target={profile.UID}
