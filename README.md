@@ -16,7 +16,7 @@ npm run dev
 ### Technologies Used
 DLog is built or managed using the following technologies:
 
-Next.js
+Next.js  
 React.js   
 SASS    
 DLog uses its own API also available here [DLog Server](https://github.com/mystictide/dlog-server).
