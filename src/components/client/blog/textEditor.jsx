@@ -185,13 +185,18 @@ export default function TextEditor({
                 )}
                 <div className="functions">
                   {isMedia ? (
-                    <button type="submit" className="btn-function">
+                    <button
+                      aria-label="add media"
+                      type="submit"
+                      className="btn-function"
+                    >
                       Add Media
                     </button>
                   ) : (
                     <>
                       {modalState.mode === "anchor" ? (
                         <button
+                          aria-label="add link"
                           type="button"
                           className="btn-function"
                           onClick={() => handleLinkSet()}
@@ -200,6 +205,7 @@ export default function TextEditor({
                         </button>
                       ) : (
                         <button
+                          aria-label="add media"
                           type="button"
                           className="btn-function"
                           onClick={() => handleMediaSet()}
@@ -221,6 +227,7 @@ export default function TextEditor({
       {!isMedia ? (
         <div className="text-editor flex-row">
           <button
+            aria-label="header"
             type="button"
             className="btn-function"
             onClick={(e) => handleTextEdit(e, "headify")}
@@ -228,6 +235,7 @@ export default function TextEditor({
             <h3>header</h3>
           </button>
           <button
+            aria-label="small"
             type="button"
             className="btn-function"
             onClick={(e) => handleTextEdit(e, "tinify")}
@@ -235,6 +243,7 @@ export default function TextEditor({
             <small>small</small>
           </button>
           <button
+            aria-label="bold"
             type="button"
             className="btn-function"
             onClick={(e) => handleTextEdit(e, "boldify")}
@@ -242,6 +251,7 @@ export default function TextEditor({
             <b>bold</b>
           </button>
           <button
+            aria-label="italic"
             type="button"
             className="btn-function"
             onClick={(e) => handleTextEdit(e, "italify")}
@@ -249,6 +259,7 @@ export default function TextEditor({
             <i>italic</i>
           </button>
           <button
+            aria-label="underscore"
             type="button"
             className="btn-function"
             onClick={(e) => handleTextEdit(e, "underscore")}
@@ -256,6 +267,7 @@ export default function TextEditor({
             <u>underscore</u>
           </button>
           <button
+            aria-label="link"
             type="button"
             className="btn-function"
             onClick={(e) => handleLink(e)}
@@ -263,6 +275,7 @@ export default function TextEditor({
             link
           </button>
           <button
+            aria-label="image"
             type="button"
             className="btn-function"
             onClick={(e) => handleMedia(e, false)}
@@ -270,6 +283,7 @@ export default function TextEditor({
             image
           </button>
           <button
+            aria-label="video"
             type="button"
             className="btn-function"
             onClick={(e) => handleMedia(e, true)}

@@ -35,6 +35,7 @@ export default function PostVoting({ user, post }) {
     <div className="full-width flex-row post-voting">
       <div className="flex-column vote">
         <button
+          aria-label="vote up"
           className={`up ${userVoteState === true ? "active" : ""}`}
           onClick={() =>
             user
@@ -50,6 +51,7 @@ export default function PostVoting({ user, post }) {
       </div>
       <div className="flex-column vote">
         <button
+          aria-label="vote down"
           className={`down ${userVoteState === false ? "active" : ""}`}
           onClick={() =>
             user

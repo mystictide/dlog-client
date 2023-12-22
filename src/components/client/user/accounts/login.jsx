@@ -62,7 +62,11 @@ export default function Login({ modalControl, setRegState }) {
               onChange={onChange}
             />
             <div className="functions">
-              <button type="submit" className="btn-function">
+              <button
+                aria-label="sign in"
+                type="submit"
+                className="btn-function"
+              >
                 Sign in
               </button>
               <span onClick={() => setRegState(true)}>..or sign up</span>

@@ -41,7 +41,7 @@ export default function HeaderClient({ user, settings }) {
     <div className={`header ${scrolling}`}>
       <div className="nav">
         <h6>
-          <a aria-label="homepage" href="/blog">
+          <a aria-label="homepage work in progress" href="/blog">
             Work in progress
           </a>
         </h6>
@@ -49,6 +49,7 @@ export default function HeaderClient({ user, settings }) {
         {user ? (
           <div className="flex-row manage">
             <button
+              aria-label="new post"
               className="btn-function"
               onClick={() => setPostState((prevState) => !prevState)}
             >
@@ -86,7 +87,7 @@ export default function HeaderClient({ user, settings }) {
               name="keyword"
               placeholder="..look up"
             />
-            <button type="submit" className="btn-function">
+            <button aria-label="search" type="submit" className="btn-function">
               <CgSearchLoading />
             </button>
           </form>

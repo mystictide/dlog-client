@@ -69,7 +69,7 @@ export default async function Home() {
               Available at{" "}
               <a
                 target="_blank"
-                aria-label="e-mail address"
+                aria-label="furkang2k20@outlook.com"
                 href="mailto:furkang2k20@outlook.com"
               >
                 furkang2k20@outlook.com

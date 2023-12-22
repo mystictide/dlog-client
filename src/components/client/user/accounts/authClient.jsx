@@ -13,7 +13,7 @@ export default function AuthClient() {
       <div className="account">
         <ul className="h-list">
           <li>
-            <button onClick={() => setModal(!modalState)}>
+            <button aria-label="account" onClick={() => setModal(!modalState)}>
               <RiAccountPinBoxFill />
             </button>
           </li>

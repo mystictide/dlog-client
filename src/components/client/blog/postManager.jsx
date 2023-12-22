@@ -129,7 +129,11 @@ export default function PostManager({ user, post, isMedia }) {
             ""
           ) : (
             <div className="full-width post-manager">
-              <button type="submit" className="btn-function">
+              <button
+                aria-label="submit"
+                type="submit"
+                className="btn-function"
+              >
                 Submit
               </button>
             </div>

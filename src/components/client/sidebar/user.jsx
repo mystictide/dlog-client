@@ -25,7 +25,11 @@ export default function User({ user, settings }) {
           >
             Edit profile
           </a>
-          <button className="btn-function" onClick={() => logout()}>
+          <button
+            aria-label="log out"
+            className="btn-function"
+            onClick={() => logout()}
+          >
             Log out
           </button>
         </div>

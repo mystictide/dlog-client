@@ -5,7 +5,7 @@ import {
   updateBio,
   updateEmail,
   updatePassword,
-  updateSocials
+  updateSocials,
 } from "@/actions/user/actions";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -114,7 +114,9 @@ export default function Settings({ user, settings }) {
                 placeholder={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <button className="btn-function">Update Email</button>
+              <button aria-label="update email" className="btn-function">
+                Update Email
+              </button>
             </form>
           </div>
           <div className="settings half-width">
@@ -137,7 +139,10 @@ export default function Settings({ user, settings }) {
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
-              <button className="btn-function full-width">
+              <button
+                aria-label="update password"
+                className="btn-function full-width"
+              >
                 Update Password
               </button>
             </form>
@@ -226,7 +231,12 @@ export default function Settings({ user, settings }) {
                 }))
               }
             />
-            <button className="btn-function full-button">Update Socials</button>
+            <button
+              aria-label="update socials"
+              className="btn-function full-button"
+            >
+              Update Socials
+            </button>
           </form>
         </div>
         <div className="full-width settings">
@@ -239,12 +249,20 @@ export default function Settings({ user, settings }) {
               placeholder={bio ?? "start typing.."}
               onChange={(e) => setBio(e.target.value)}
             />
-            <button className="btn-function full-button">Update Bio</button>
+            <button
+              aria-label="update bio"
+              className="btn-function full-button"
+            >
+              Update Bio
+            </button>
           </form>
         </div>
         <div className="full-width settings">
           <form className="full-width" onSubmit={onEmailSubmit}>
-            <button className="btn-function full-button">
+            <button
+              aria-label="deactivate account"
+              className="btn-function full-button"
+            >
               Deactivate Account
             </button>
           </form>

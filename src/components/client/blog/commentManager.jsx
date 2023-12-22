@@ -64,7 +64,7 @@ export default function CommentManager({ post, comment }) {
             />
           </div>
           <div className="full-width comment-manager">
-            <button type="submit" className="btn-function">
+            <button aria-label="submit" type="submit" className="btn-function">
               Submit
             </button>
           </div>

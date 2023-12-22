@@ -26,6 +26,7 @@ export default function UserInteractions({ target, stats }) {
       {!stats.IsBlockedYou ? (
         <div className="function flex-column">
           <button
+            aria-label="follow"
             type="submit"
             className={`btn-function ${followState ? "active" : ""}`}
             onClick={() => handleFollowing()}
@@ -40,6 +41,7 @@ export default function UserInteractions({ target, stats }) {
 
       <div className="function flex-column">
         <button
+          aria-label="block"
           type="submit"
           className={`btn-function ${blockState ? "active" : ""}`}
           onClick={() => handleBlocking()}

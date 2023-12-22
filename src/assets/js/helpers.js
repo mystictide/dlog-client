@@ -137,7 +137,7 @@ export function buildHTMLText(method, selection, body) {
     );
   }
   if (method === "image") {
-    result = body.replaceAll(selection, `<img src="${selection}"/>`);
+    result = body.replaceAll(selection, `<img alt="blog post media" src="${selection}"/>`);
   }
   if (method === "video") {
     result = body.replaceAll(
@@ -159,7 +159,7 @@ export function buildMedia(mode, body, url) {
     body += `<video controls><source src="${url}" type="video/mp4"></video>`;
     return body;
   } else {
-    body += `<img src="${url}"/>`;
+    body += `<img alt="blog post media" src="${url}"/>`;
     return body;
   }
 }

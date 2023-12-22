@@ -31,12 +31,17 @@ export default function MobileUser({ settings }) {
               <div className="profile flex-column">
                 <div className="flex-row">
                   <button
+                    aria-label="user settings"
                     className="btn-function"
                     onClick={() => router.push("/user/settings")}
                   >
                     Edit profile
                   </button>
-                  <button className="btn-function" onClick={() => logout()}>
+                  <button
+                    aria-label="log out"
+                    className="btn-function"
+                    onClick={() => logout()}
+                  >
                     Log out
                   </button>
                 </div>

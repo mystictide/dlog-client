@@ -64,7 +64,7 @@ export default function AdvancedSearch({ filter }) {
             defaultChecked={filter.ismedia}
           />
         </label>
-        <button type="submit" className="btn-function">
+        <button aria-label="search" type="submit" className="btn-function">
           Search
         </button>
       </form>

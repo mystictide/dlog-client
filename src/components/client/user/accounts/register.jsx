@@ -153,7 +153,11 @@ export default function Register({ modalControl, setRegState }) {
             )}
             <div className="functions">
               {vPassword || usernameExists || emailExists ? (
-                <button type="button" className="btn-loading">
+                <button
+                  aria-label="loading"
+                  type="button"
+                  className="btn-loading"
+                >
                   <BarLoader
                     color="#b2533e"
                     height={10}
@@ -164,7 +168,11 @@ export default function Register({ modalControl, setRegState }) {
                 </button>
               ) : (
                 <>
-                  <button type="submit" className="btn-function">
+                  <button
+                    aria-label="sign up"
+                    type="submit"
+                    className="btn-function"
+                  >
                     Sign up
                   </button>
                 </>
