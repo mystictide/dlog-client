@@ -68,7 +68,7 @@ export default function PostManager({ user, post, isMedia }) {
       <form className="flex-column full-width" onSubmit={onSubmit}>
         <div className="flex-column full-width">
           <div className="title">
-            <a className="interactive" href="/blog">
+            <a className="interactive" aria-label="go back" href="/blog">
               <IoReturnDownBackSharp />
             </a>
             <h3>{isMedia ? "New Media" : "New Post"}</h3>

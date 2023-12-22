@@ -16,6 +16,7 @@ export default async function Pager({ data, filter }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={data.data[0].Category}
                   href={`/blog/c/${data.data[0].Category.toLowerCase()}/${buildFilterURL(
                     {
                       ...filter,
@@ -33,6 +34,7 @@ export default async function Pager({ data, filter }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={data.data[0].Category}
                   href={`/blog/c/${data.data[0].Category.toLowerCase()}/${buildFilterURL(
                     {
                       ...filter,
@@ -52,6 +54,7 @@ export default async function Pager({ data, filter }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={data.data[0].Category}
                   href={`/blog/c/${data.data[0].Category.toLowerCase()}/${buildFilterURL(
                     {
                       ...filter,
@@ -69,6 +72,7 @@ export default async function Pager({ data, filter }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={data.data[0].Category}
                   href={`/blog/c/${data.data[0].Category.toLowerCase()}/${buildFilterURL(
                     {
                       ...filter,

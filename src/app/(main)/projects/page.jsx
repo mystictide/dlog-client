@@ -22,7 +22,7 @@ export default async function Projects() {
       <div className="projects">
         <section className="header">
           <h1>
-            <a href="/">
+            <a aria-label="go back" href="/">
               <IoReturnDownBackSharp />
             </a>{" "}
             projects portfolio

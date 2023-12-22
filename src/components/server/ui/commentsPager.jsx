@@ -16,6 +16,7 @@ export default async function CommentsPager({ data, post }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={post.Title}
                   href={`/blog/post/${formatPrettyURL(post.Title)}-${
                     post.ID
                   }/?page=1`}
@@ -30,6 +31,7 @@ export default async function CommentsPager({ data, post }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={post.Title}
                   href={`/blog/post/${formatPrettyURL(post.Title)}-${
                     post.ID
                   }/?page=${data.filter.pager.CurrentPage - 1}`}
@@ -46,6 +48,7 @@ export default async function CommentsPager({ data, post }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={post.Title}
                   href={`/blog/post/${formatPrettyURL(post.Title)}-${
                     post.ID
                   }/?page=${data.filter.pager.CurrentPage + 1}`}
@@ -60,6 +63,7 @@ export default async function CommentsPager({ data, post }) {
               <li className="pager-item">
                 <a
                   className="pager-button"
+                  aria-label={post.Title}
                   href={`/blog/post/${formatPrettyURL(post.Title)}-${
                     post.ID
                   }/?page=${data.filter.pager.TotalPages}`}

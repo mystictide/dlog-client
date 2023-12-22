@@ -41,7 +41,9 @@ export default function HeaderClient({ user, settings }) {
     <div className={`header ${scrolling}`}>
       <div className="nav">
         <h6>
-          <a href="/blog">Work in progress</a>
+          <a aria-label="homepage" href="/blog">
+            Work in progress
+          </a>
         </h6>
         {user ? <MobileUser settings={settings} /> : <AuthClient />}
         {user ? (
@@ -54,10 +56,18 @@ export default function HeaderClient({ user, settings }) {
             </button>
             {postState ? (
               <div className="manage-functions">
-                <a href="/blog/new" className="btn-post">
+                <a
+                  aria-label="create new post"
+                  href="/blog/new"
+                  className="btn-post"
+                >
                   NEW POST
                 </a>
-                <a href="/blog/new/media" className="btn-post">
+                <a
+                  aria-label="create new media"
+                  href="/blog/new/media"
+                  className="btn-post"
+                >
                   NEW MEDIA
                 </a>
               </div>

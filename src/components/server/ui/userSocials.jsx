@@ -15,7 +15,7 @@ export default async function UserSocials({ socials }) {
       {socials.facebook ? (
         socials.facebook.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.facebook}>
+            <a aria-label="facebook" href={socials?.facebook}>
               <BiLogoFacebookSquare />
             </a>
           </li>
@@ -28,7 +28,7 @@ export default async function UserSocials({ socials }) {
       {socials.instagram ? (
         socials.instagram.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.instagram}>
+            <a aria-label="instagram" href={socials?.instagram}>
               <BiLogoInstagramAlt />
             </a>
           </li>
@@ -41,7 +41,7 @@ export default async function UserSocials({ socials }) {
       {socials.twitter ? (
         socials.twitter.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.twitter}>
+            <a aria-label="twitter" href={socials?.twitter}>
               <BiLogoTwitter />
             </a>
           </li>
@@ -54,7 +54,7 @@ export default async function UserSocials({ socials }) {
       {socials.linkedin ? (
         socials.linkedin.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.linkedin}>
+            <a aria-label="linkedin" href={socials?.linkedin}>
               <BiLogoLinkedinSquare />
             </a>
           </li>
@@ -67,7 +67,7 @@ export default async function UserSocials({ socials }) {
       {socials.youtube ? (
         socials.youtube.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.youtube}>
+            <a aria-label="youtube" href={socials?.youtube}>
               <BiLogoYoutube />
             </a>
           </li>
@@ -80,7 +80,7 @@ export default async function UserSocials({ socials }) {
       {socials.personal ? (
         socials.personal.startsWith("https") ? (
           <li className="interactive">
-            <a href={socials?.personal}>
+            <a aria-label="personal website" href={socials?.personal}>
               <BiWorld />
             </a>
           </li>

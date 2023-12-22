@@ -7,6 +7,16 @@ import BlogMedia from "@/components/server/blog/blogMedia";
 import BlogPost from "@/components/server/blog/blogPost";
 import Pager from "@/components/server/ui/pager";
 
+export async function generateMetadata() {
+  return {
+    metadataBase: new URL("https://herrguller.cc/blog"),
+    description:
+      "Discover a limitless world of ideas on our open blog platform. Anyone can contribute and share their passions, insights, and stories on a vast array of topics – from technology and media to lifestyle and personal experiences. Immerse yourself in a community where creativity knows no bounds. Start writing or exploring today!",
+    keywords:
+      "web development, portfolio, responsive design, web applications, coding projects, UX/UI design, front-end development, back-end development, digital experiences, creative solutions, coding, programming, personal blog, tech trends, music, films, podcasts, memes, open blog, diverse perspectives, community writing, tech trends, personal experiences, creative pursuits, lifestyle, opinions, contributor platform, free expression",
+  };
+}
+
 export default async function Blog({ searchParams }) {
   let recentPosts = null;
   let recentMedia = null;

@@ -31,6 +31,7 @@ export default async function Comments({ user, post, searchParams }) {
                       <h5>
                         <a
                           className="user-link"
+                          aria-label={comment.Author}
                           href={`/user/${comment.Author}`}
                         >
                           {comment.Author}

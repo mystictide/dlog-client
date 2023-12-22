@@ -48,7 +48,7 @@ export default async function View({ params, searchParams }) {
             <ManageAvatar viewOnly={true} picture={post.AuthorImage} />
             <section className="flex-column">
               <h5>
-                <a className="user-link" href={`/user/${post.Author}`}>
+                <a className="user-link" aria-label={post.Author} href={`/user/${post.Author}`}>
                   {post.Author}
                 </a>
               </h5>
@@ -65,13 +65,13 @@ export default async function View({ params, searchParams }) {
             <section className="author-functions">
               {user?.UID === post.UID ? (
                 <div className="flex-row">
-                  <a
+                  <a aria-label="edit" 
                     href={`/blog/manage/${post.ID}`}
                     className="anchor-function"
                   >
                     Edit
                   </a>
-                  <a href={"/"} className="anchor-function">
+                  <a aria-label="hide" href={"/"} className="anchor-function">
                     Hide
                   </a>
                 </div>

@@ -11,22 +11,34 @@ export default function Categories() {
       <div className="categories">
         <ul className="h-list">
           <li>
-            <a href="/blog/c/tech">Tech</a>
+            <a aria-label="tech" href="/blog/c/tech">
+              Tech
+            </a>
           </li>
           <li>
-            <a href="/blog/c/film">Film</a>
+            <a aria-label="film" href="/blog/c/film">
+              Film
+            </a>
           </li>
           <li>
-            <a href="/blog/c/music">Music</a>
+            <a aria-label="music" href="/blog/c/music">
+              Music
+            </a>
           </li>
           <li>
-            <a href="/blog/c/literature">Literature</a>
+            <a aria-label="literature" href="/blog/c/literature">
+              Literature
+            </a>
           </li>
           <li>
-            <a href="/blog/c/memes">Memes</a>
+            <a aria-label="memes" href="/blog/c/memes">
+              Memes
+            </a>
           </li>
           <li>
-            <a href="/blog/c/personal">Personal</a>
+            <a aria-label="personal" href="/blog/c/personal">
+              Personal
+            </a>
           </li>
         </ul>
       </div>
@@ -50,22 +62,34 @@ export default function Categories() {
             <div className="modal-content">
               <ul className="v-list flex-column">
                 <li>
-                  <a href="/blog/c/tech">Tech</a>
+                  <a aria-label="tech" href="/blog/c/tech">
+                    Tech
+                  </a>
                 </li>
                 <li>
-                  <a href="/blog/c/film">Film</a>
+                  <a aria-label="film" href="/blog/c/film">
+                    Film
+                  </a>
                 </li>
                 <li>
-                  <a href="/blog/c/music">Music</a>
+                  <a aria-label="music" href="/blog/c/music">
+                    Music
+                  </a>
                 </li>
                 <li>
-                  <a href="/blog/c/literature">Literature</a>
+                  <a aria-label="literature" href="/blog/c/literature">
+                    Literature
+                  </a>
                 </li>
                 <li>
-                  <a href="/blog/c/memes">Memes</a>
+                  <a aria-label="memes" href="/blog/c/memes">
+                    Memes
+                  </a>
                 </li>
                 <li>
-                  <a href="/blog/c/personal">Personal</a>
+                  <a aria-label="personal" href="/blog/c/personal">
+                    Personal
+                  </a>
                 </li>
               </ul>
             </div>

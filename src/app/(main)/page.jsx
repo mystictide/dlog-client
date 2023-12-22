@@ -41,10 +41,10 @@ export default async function Home() {
               hello, I'm <span>FURKAN GÜLER</span>
             </h1>
             <h3>I started Software Development training in 2019.</h3>
-            <h3>
+            <h4>
               I have been improving myself in the fields of Full-stack Web and
               Desktop for the last 3 years.
-            </h3>
+            </h4>
           </div>
           <div className="showcase">
             <h4>
@@ -52,6 +52,7 @@ export default async function Home() {
               <a
                 href="/FurkanGüler_CV2023_en.pdf"
                 alt="resume"
+                aria-label="resume"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -59,24 +60,39 @@ export default async function Home() {
               </a>
             </h4>
             <h4>
-              View live versions of some of my <a href="/projects">projects</a>
+              View live versions of some of my{" "}
+              <a aria-label="projects" href="/projects">
+                projects
+              </a>
             </h4>
             <h4>
               Available at{" "}
-              <a target="_blank" href="mailto:furkang2k20@outlook.com">
+              <a
+                target="_blank"
+                aria-label="e-mail address"
+                href="mailto:furkang2k20@outlook.com"
+              >
                 furkang2k20@outlook.com
               </a>
             </h4>
           </div>
         </div>
         <div className="socials">
-          <a target="_blank" href="https://github.com/mystictide">
+          <a
+            target="_blank"
+            aria-label="GitHub"
+            href="https://github.com/mystictide"
+          >
             <BsGithub />
           </a>
-          <a className="blog" target="_blank" href="/blog">
+          <a className="blog" target="_blank" aria-label="Blog" href="/blog">
             <FaBlog />
           </a>
-          <a target="_blank" href="https://www.linkedin.com/in/furkan-glr">
+          <a
+            target="_blank"
+            aria-label="LinkedIn"
+            href="https://www.linkedin.com/in/furkan-glr"
+          >
             <BsLinkedin />
           </a>
         </div>

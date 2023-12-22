@@ -11,16 +11,22 @@ export default async function Portfolio() {
       >
         <span>Blog</span>
         <div className="actions">
-          <a href="https://herrguller.cc/blog/" target="_blank">
+          <a
+            aria-label="project live"
+            href="https://herrguller.cc/blog/"
+            target="_blank"
+          >
             Live
           </a>
           <a
+            aria-label="front-end repository"
             href="https://github.com/mystictide/dlog-client"
             target="_blank"
           >
             Front-end
           </a>
           <a
+            aria-label="back-end repository"
             href="https://github.com/mystictide/dlog-server"
             target="_blank"
           >
@@ -62,12 +68,14 @@ export default async function Portfolio() {
         <span>Explore Spotify</span>
         <div className="actions">
           <a
+            aria-label="project live"
             href="https://mystictide.github.io/explore-spotify/"
             target="_blank"
           >
             Live
           </a>
           <a
+            aria-label="front-end repository"
             href="https://github.com/mystictide/explore-spotify"
             target="_blank"
           >
@@ -83,16 +91,22 @@ export default async function Portfolio() {
       >
         <span>Trainer</span>
         <div className="actions">
-          <a href="https://trainer.herrguller.cc/" target="_blank">
+          <a
+            aria-label="project live"
+            href="https://trainer.herrguller.cc/"
+            target="_blank"
+          >
             Live
           </a>
           <a
+            aria-label="front-end repository"
             href="https://github.com/mystictide/trainer-client"
             target="_blank"
           >
             Front-end
           </a>
           <a
+            aria-label="back-end repository"
             href="https://github.com/mystictide/trainer-server"
             target="_blank"
           >
@@ -108,13 +122,13 @@ export default async function Portfolio() {
       >
         <span>Tester</span>
         <div className="actions">
-          <a href="https://tester.herrguller.cc/" target="_blank">
+          <a aria-label="project live" href="https://tester.herrguller.cc/" target="_blank">
             Live
           </a>
-          <a href="https://github.com/mystictide/tester.client" target="_blank">
+          <a aria-label="front-end repository" href="https://github.com/mystictide/tester.client" target="_blank">
             Front-end
           </a>
-          <a href="https://github.com/mystictide/tester.api" target="_blank">
+          <a aria-label="back-end repository" href="https://github.com/mystictide/tester.api" target="_blank">
             Back-end
           </a>
         </div>
@@ -127,7 +141,7 @@ export default async function Portfolio() {
       >
         <span>Artvee Scraper</span>
         <div className="actions">
-          <a
+          <a aria-label="repository"
             href="https://github.com/mystictide/artvee-scraper"
             target="_blank"
           >
@@ -143,10 +157,10 @@ export default async function Portfolio() {
       >
         <span>Twitter Bots</span>
         <div className="actions">
-          <a href="https://twitter.com/orpheus_laments" target="_blank">
+          <a aria-label="project live" href="https://twitter.com/orpheus_laments" target="_blank">
             Live
           </a>
-          <a href="https://github.com/mystictide/poetry-bot" target="_blank">
+          <a aria-label="back-end repository" href="https://github.com/mystictide/poetry-bot" target="_blank">
             Back-end
           </a>
         </div>
@@ -159,7 +173,7 @@ export default async function Portfolio() {
       >
         <span>Framer</span>
         <div className="actions">
-          <a href="https://github.com/mystictide/framer" target="_blank">
+          <a aria-label="repository" href="https://github.com/mystictide/framer" target="_blank">
             Repository
           </a>
         </div>

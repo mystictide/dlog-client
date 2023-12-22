@@ -131,7 +131,10 @@ export function buildHTMLText(method, selection, body) {
     result = body.replaceAll(selection, `<small>${selection}</small>`);
   }
   if (method === "linkify") {
-    result = body.replaceAll(selection, `<a href="${selection}">link</a>`);
+    result = body.replaceAll(
+      selection,
+      `<a aria-label="${selection}" href="${selection}">link</a>`
+    );
   }
   if (method === "image") {
     result = body.replaceAll(selection, `<img src="${selection}"/>`);
@@ -146,7 +149,7 @@ export function buildHTMLText(method, selection, body) {
 }
 
 export function buildLink(body, url, text) {
-  body += `<a href="${url}">${text}</a>`;
+  body += `<a aria-label="${text}" href="${url}">${text}</a>`;
   return body;
 }
 

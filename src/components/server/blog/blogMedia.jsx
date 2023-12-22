@@ -27,6 +27,7 @@ export default async function BlogMedia({ data }) {
     <>
       {data?.map((post) => (
         <a
+          aria-label={post.Title}
           href={`/blog/post/${formatPrettyURL(post.Title)}-${post.ID}`}
           key={post.ID}
         >

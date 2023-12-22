@@ -29,7 +29,11 @@ export default async function UserProfile({ params }) {
           <ManageAvatar viewOnly={true} picture={profile.UserImage} />
           <section className="bio flex-column">
             <h4>
-              <a className="user-link" href={`/user/${profile.Username}`}>
+              <a
+                className="user-link"
+                aria-label={profile.Username}
+                href={`/user/${profile.Username}`}
+              >
                 {profile.Username}
               </a>
             </h4>

@@ -9,10 +9,20 @@ export default function User({ user, settings }) {
       <ManageAvatar viewOnly={false} picture={settings?.picture} />
       <div className="profile flex-column">
         <h4>
-          <a className="user-link" href={`/user/${user.Username}`}>{user.Username}</a>
+          <a
+            className="user-link"
+            aria-label={user.Username}
+            href={`/user/${user.Username}`}
+          >
+            {user.Username}
+          </a>
         </h4>
         <div className="flex-row">
-          <a className="anchor-function" href={"/user/settings"}>
+          <a
+            className="anchor-function"
+            aria-label="user settings"
+            href={"/user/settings"}
+          >
             Edit profile
           </a>
           <button className="btn-function" onClick={() => logout()}>

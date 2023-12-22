@@ -7,9 +7,10 @@ export const metadata = {
     default: "dlog",
     template: "%s / dlog",
   },
-  description: "Just a blog",
+  description:
+    "Explore my portfolio showcasing a diverse range of web development projects. From responsive websites to interactive web applications.",
   keywords:
-    "web development, coding, programming, personal blog, tech trends, music, films, podcasts, memes",
+    "web development, portfolio, responsive design, web applications, coding projects, UX/UI design, front-end development, back-end development, digital experiences, creative solutions, coding, programming, personal blog, tech trends, music, films, podcasts, memes",
   author: "Furkan Güler",
 };
 

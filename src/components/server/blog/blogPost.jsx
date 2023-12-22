@@ -21,7 +21,7 @@ export default async function BlogPost({ data }) {
   return (
     <>
       {data?.map((post) => (
-        <a
+        <a aria-label={post.Title}
           href={`/blog/post/${formatPrettyURL(post.Title)}-${post.ID}`}
           key={post.ID}
         >
