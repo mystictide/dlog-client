@@ -1,5 +1,5 @@
 "use server";
-import { readCookie } from "@/assets/js/helpers";
+import { readCookie, setExpirationDate } from "@/assets/js/helpers";
 import axios from "axios";
 import { cookies } from "next/headers";
 import { resetSettings, setSettings } from "../user/actions";
@@ -22,7 +22,9 @@ export async function register(data) {
       .then(function (response) {
         let user = JSON.stringify(response.data);
         delete user.settings;
-        cookies().set("auth", user);
+        cookies().set("auth", user, {
+          expires: setExpirationDate(88),
+        });
       })
       .catch(function (error) {
         return error;
@@ -52,7 +54,9 @@ export async function login(data) {
           "ua-small.jpg";
         setSettings(response.data.Settings);
         delete response.data.Settings;
-        cookies().set("auth", JSON.stringify(response.data));
+        cookies().set("auth", JSON.stringify(response.data), {
+          expires: setExpirationDate(88),
+        });
         return response.data;
       })
       .catch(function (error) {

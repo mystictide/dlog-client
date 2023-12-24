@@ -1,6 +1,7 @@
 "use client";
 
 import { logout } from "@/actions/auth/actions";
+import { formatPrettyURL } from "@/assets/js/helpers";
 import ManageAvatar from "../user/settings/manageAvatar";
 
 export default function User({ user, settings }) {
@@ -12,7 +13,7 @@ export default function User({ user, settings }) {
           <a
             className="user-link"
             aria-label={user.Username}
-            href={`/user/${user.Username}`}
+            href={`/user/${formatPrettyURL(user.Username)}`}
           >
             {user.Username}
           </a>

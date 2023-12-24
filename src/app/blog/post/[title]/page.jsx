@@ -1,7 +1,7 @@
 "use server";
 
 import { getPost } from "@/actions/blog/actions";
-import { decodeTitle, formatDate, readCookie } from "@/assets/js/helpers";
+import { decodeTitle, formatDate, formatPrettyURL, readCookie } from "@/assets/js/helpers";
 import CommentManager from "@/components/client/blog/commentManager";
 import PostVoting from "@/components/client/blog/postVoting";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
@@ -48,7 +48,11 @@ export default async function View({ params, searchParams }) {
             <ManageAvatar viewOnly={true} picture={post.AuthorImage} />
             <section className="flex-column">
               <h5>
-                <a className="user-link" aria-label={post.Author} href={`/user/${post.Author}`}>
+                <a
+                  className="user-link"
+                  aria-label={post.Author}
+                  href={`/user/${formatPrettyURL(post.Author)}`}
+                >
                   {post.Author}
                 </a>
               </h5>
@@ -65,7 +69,8 @@ export default async function View({ params, searchParams }) {
             <section className="author-functions">
               {user?.UID === post.UID ? (
                 <div className="flex-row">
-                  <a aria-label="edit" 
+                  <a
+                    aria-label="edit"
                     href={`/blog/manage/${post.ID}`}
                     className="anchor-function"
                   >

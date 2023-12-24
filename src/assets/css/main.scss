@@ -595,43 +595,6 @@ a.user-link {
                 }
             }
 
-            .main-blog.comments {
-                padding: 15px;
-                @include light-background($light-theme: true);
-                .comment-container {
-                    .author {
-                        @include no-select();
-                        margin: 0;
-                        .avatar-view {
-                            width: 45px;
-                            height: 45px;
-                        }
-                    }
-                    .comment-body {
-                        padding: 5px 5px 5px 52px;
-                        line-height: 1.5em;
-                        font-size: 0.85rem;
-                        white-space: break-spaces;
-                    }
-                    .comment-voting {
-                        @extend .post-voting;
-                        margin-left: auto;
-                        .vote {
-                            button {
-                                width: 21px !important;
-                                height: 20px !important;
-                                svg {
-                                    font-size: 1.1rem !important;
-                                }
-                            }
-                            label {
-                                font-size: 0.65rem !important;
-                            }
-                        }
-                    }
-                }
-            }
-
             .post-view {
                 .post-body {
                     line-height: 1.5em;
@@ -679,6 +642,47 @@ a.user-link {
                             }
                             label {
                                 font-size: 0.75rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .main-blog.comments {
+                padding: 15px;
+                @include light-background($light-theme: true);
+                .comment-container {
+                    .author {
+                        @include no-select();
+                        margin: 0;
+                        .avatar-view {
+                            width: 45px;
+                            height: 45px;
+
+                            .default {
+                                margin: 15px auto;
+                            }
+                        }
+                    }
+                    .comment-body {
+                        padding: 5px 5px 5px 52px;
+                        line-height: 1.5em;
+                        font-size: 0.85rem;
+                        white-space: break-spaces;
+                    }
+                    .comment-voting {
+                        @extend .post-voting;
+                        margin-left: auto;
+                        .vote {
+                            button {
+                                width: 21px !important;
+                                height: 20px !important;
+                                svg {
+                                    font-size: 1.1rem !important;
+                                }
+                            }
+                            label {
+                                font-size: 0.65rem !important;
                             }
                         }
                     }
@@ -751,6 +755,25 @@ a.user-link {
                             display: flex;
                             justify-content: center;
                             align-items: center;
+                        }
+                    }
+                }
+                .follow-list {
+                    justify-content: flex-start;
+                    margin: 0 10px;
+                    overflow: hidden;
+                    .author {
+                        margin: 10px auto;
+                        width: 46px;
+                        overflow: hidden;
+                        .avatar-view {
+                            width: 45px;
+                            height: 45px;
+                            .default {
+                                height: 75%;
+                                width: 100%;
+                                margin: 13px auto;
+                            }
                         }
                     }
                 }
@@ -853,7 +876,6 @@ a.user-link {
             .account {
                 display: flex;
                 height: 100%;
-                margin-right: auto;
                 li {
                     button {
                         border: none;
@@ -1439,6 +1461,10 @@ form {
                     justify-content: center;
                 }
             }
+            .follow-list {
+                flex-direction: row;
+                margin: 0 !important;
+            }
         }
     }
     .main-container .header .nav .nav-user {
@@ -1466,8 +1492,11 @@ form {
         flex-direction: row !important;
         justify-content: center !important;
         .vote {
-            width: 75px !important;
+            width: 45px !important;
         }
+    }
+    .main-container .content-wrapper .content .main-blog.comments .comment-container .comment-voting .vote {
+        width: 25px !important;
     }
 }
 
@@ -1570,6 +1599,10 @@ form {
                     justify-content: center;
                 }
             }
+            .follow-list {
+                flex-direction: row;
+                margin: 0 !important;
+            }
         }
     }
 
@@ -1606,7 +1639,10 @@ form {
         flex-direction: row !important;
         justify-content: center !important;
         .vote {
-            width: 75px !important;
+            width: 45px !important;
         }
+    }
+    .main-container .content-wrapper .content .main-blog.comments .comment-container .comment-voting .vote {
+        width: 25px !important;
     }
 }

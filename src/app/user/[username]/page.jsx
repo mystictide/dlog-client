@@ -1,12 +1,13 @@
 "use server";
 
 import { viewUser } from "@/actions/main/actions";
-import { decodeURL, readCookie } from "@/assets/js/helpers";
+import { decodeURL, formatPrettyURL, readCookie } from "@/assets/js/helpers";
 import UserInteractions from "@/components/client/user/profile/userIntereactions";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import BlogMedia from "@/components/server/blog/blogMedia";
 import BlogPost from "@/components/server/blog/blogPost";
 import UserSocials from "@/components/server/ui/userSocials";
+import UsersList from "@/components/server/user/profile/usersList";
 import { cookies } from "next/headers";
 
 export async function generateMetadata({ params }) {
@@ -32,7 +33,7 @@ export default async function UserProfile({ params }) {
               <a
                 className="user-link"
                 aria-label={profile.Username}
-                href={`/user/${profile.Username}`}
+                href={`/user/${formatPrettyURL(profile.Username)}`}
               >
                 {profile.Username}
               </a>
@@ -62,6 +63,28 @@ export default async function UserProfile({ params }) {
               target={profile.UID}
               stats={profile.UserStatistics}
             />
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="full-width flex-column">
+          {profile.Following.length > 0 ? (
+            <>
+              <h3 className="title">FOLLOWING</h3>
+              <section className="flex-column follow-list">
+                <UsersList users={profile.Following} />
+              </section>
+            </>
+          ) : (
+            ""
+          )}
+          {profile.Followers.length > 0 ? (
+            <>
+              <h3 className="title">FOLLOWERS</h3>
+              <section className="flex-column">
+                <UsersList users={profile.Followers} />
+              </section>
+            </>
           ) : (
             ""
           )}
