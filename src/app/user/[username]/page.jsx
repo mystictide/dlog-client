@@ -100,7 +100,7 @@ export default async function UserProfile({ params }) {
               <div className="full-width flex-column">
                 <h3 className="title">RECENT BLOG POSTS</h3>
                 <section className="flex-column main-blog posts">
-                  <BlogPost data={profile.RecentPosts} />
+                  <BlogPost data={profile.RecentPosts} mini={false}/>
                 </section>
                 <h3 className="title">RECENT MEDIA</h3>
                 <section className="flex-row main-blog media">

@@ -1,8 +1,14 @@
 "use server";
 
 import { getPost } from "@/actions/blog/actions";
-import { decodeTitle, formatDate, formatPrettyURL, readCookie } from "@/assets/js/helpers";
+import {
+  decodeTitle,
+  formatDate,
+  formatPrettyURL,
+  readCookie,
+} from "@/assets/js/helpers";
 import CommentManager from "@/components/client/blog/commentManager";
+import PostFunctions from "@/components/client/blog/postFunctions";
 import PostVoting from "@/components/client/blog/postVoting";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
@@ -67,22 +73,7 @@ export default async function View({ params, searchParams }) {
               <UserSocials socials={post.AuthorSocials} />
             </section>
             <section className="author-functions">
-              {user?.UID === post.UID ? (
-                <div className="flex-row">
-                  <a
-                    aria-label="edit"
-                    href={`/blog/manage/${post.ID}`}
-                    className="anchor-function"
-                  >
-                    Edit
-                  </a>
-                  <a aria-label="hide" href={"/"} className="anchor-function">
-                    Hide
-                  </a>
-                </div>
-              ) : (
-                ""
-              )}
+              {user?.UID === post.UID ? <PostFunctions post={post} /> : ""}
             </section>
           </div>
           <section className="flex-column main-blog posts">

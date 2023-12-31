@@ -46,7 +46,7 @@ export default async function Blog({ searchParams }) {
           <div className="full-width flex-column">
             <h3 className="title">RECENT BLOG POSTS</h3>
             <section className="flex-column main-blog posts">
-              <BlogPost data={recentPosts} />
+              <BlogPost data={recentPosts} mini={false}/>
             </section>
             <h3 className="title">RECENT MEDIA</h3>
             <section className="flex-row main-blog media">

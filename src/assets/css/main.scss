@@ -720,6 +720,15 @@ a.user-link {
                         width: 65px;
                         font-size: 0.9rem;
                     }
+                    button {
+                        height: 30px;
+                        width: 65px;
+                        font-size: 0.9rem;
+                    }
+                    button.active {
+                        width: 75px;
+                        border: 2px dotted $flavour-dark;
+                    }
                 }
             }
 
@@ -808,9 +817,11 @@ a.user-link {
             height: calc(100vh - 50px);
             padding: 20px 10px;
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            row-gap: 1rem;
             position: sticky;
             top: 50px;
-            justify-content: center;
             @include light-background($light-theme: true);
             .user-sidebar {
                 justify-content: flex-start;
@@ -833,6 +844,39 @@ a.user-link {
                         height: 30px;
                         font-size: 0.7rem;
                         text-align: center;
+                    }
+                }
+            }
+            .sidebar-content {
+                .title {
+                    font-size: 0.7rem;
+                    margin-top: 1rem;
+                    background: none !important;
+                }
+                .main-blog.posts {
+                    background: none !important;
+                    .post-container {
+                        padding: 0.6rem 0.75rem;
+                    }
+                    .post-title {
+                        font-size: 0.92rem;
+                    }
+                    .author {
+                        .author-name {
+                            font-size: 0.65rem;
+                        }
+                    }
+                }
+            }
+            .hyper-user {
+                .author {
+                    align-items: center;
+                    .avatar-view {
+                        width: 55px;
+                        height: 55px;
+                        .default {
+                            margin: 17px auto;
+                        }
                     }
                 }
             }

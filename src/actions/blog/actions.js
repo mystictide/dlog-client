@@ -93,6 +93,37 @@ export async function managePost(data) {
   }
 }
 
+export async function togglePost(data) {
+  const cookieStore = cookies();
+  const user = readCookie(cookieStore, "auth") ?? null;
+  try {
+    if (user) {
+      var config = {
+        method: "post",
+        url: API_URL + "blog/toggle/post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.Token,
+        },
+        data: data,
+      };
+      var data = await axios(config)
+        .then(function (response) {
+          return response.data;
+        })
+        .catch(function (error) {
+          let err = { error: true, message: error?.response.data };
+          return err;
+        });
+      return data;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return true;
+  }
+}
+
 export async function manageComment(data) {
   const cookieStore = cookies();
   const user = readCookie(cookieStore, "auth") ?? null;

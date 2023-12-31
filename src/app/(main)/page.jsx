@@ -40,10 +40,10 @@ export default async function Home() {
             <h1>
               hello, I'm <span>FURKAN GÜLER</span>
             </h1>
-            <h3>I started Software Development training in 2019.</h3>
+            <h3>I got into Software Development in 2019.</h3>
             <h4>
-              I have been improving myself in the fields of Full-stack Web and
-              Desktop for the last 3 years.
+              I have since dedicated my time into refining my expertise in
+              Full-stack Web and Desktop development.
             </h4>
           </div>
           <div className="showcase">
