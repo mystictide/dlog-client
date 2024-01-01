@@ -19,14 +19,26 @@ export default async function Sidebar() {
       {user ? <User user={user} settings={settings} /> : ""}
       <div className="sidebar-content">
         <div className="full-width flex-column">
-          <h5 className="title">Check out these other posts</h5>
-          <section className="flex-column main-blog posts">
-            <BlogPost data={posts} mini={true} />
-          </section>
-          <h5 className="title">Check out these authors</h5>
-          <section className="flex-column main-blog posts">
-            <SidebarUsersList data={users} />
-          </section>
+          {posts?.length > 0 ? (
+            <>
+              <h5 className="title">Check out these other posts</h5>
+              <section className="flex-column main-blog posts">
+                <BlogPost data={posts} mini={true} />
+              </section>
+            </>
+          ) : (
+            ""
+          )}
+          {users?.length > 0 ? (
+            <>
+              <h5 className="title">Check out these authors</h5>
+              <section className="flex-column main-blog posts">
+                <SidebarUsersList data={users} />
+              </section>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
