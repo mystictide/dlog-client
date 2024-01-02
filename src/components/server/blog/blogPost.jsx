@@ -2,20 +2,25 @@
 
 import { formatDate, formatPrettyURL } from "@/assets/js/helpers";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
+import DOMPurify from "isomorphic-dompurify";
 
 export default async function BlogPost({ data, mini }) {
   function createTitle(title) {
     let text = title.length >= 56 ? title.substring(0, 56) + "..." : title;
-    return { __html: text };
+    return { __html: DOMPurify.sanitize(text) };
   }
   function Title(title) {
-    return <h3 className="post-title" dangerouslySetInnerHTML={createTitle(title)} />;
+    return (
+      <h3 className="post-title" dangerouslySetInnerHTML={createTitle(title)} />
+    );
   }
   function Body(body) {
     if (body === null || body === "") return false;
     else body = body.toString();
     let text = body.replace(/(<([^>]+)>)/gi, "");
-    return text.length >= 445 ? text.substring(0, 445) + "..." : text;
+    return DOMPurify.sanitize(
+      text.length >= 445 ? text.substring(0, 445) + "..." : text
+    );
   }
 
   return (

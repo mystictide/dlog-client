@@ -2,14 +2,15 @@
 
 import { formatDate, formatPrettyURL } from "@/assets/js/helpers";
 import ManageAvatar from "@/components/client/user/settings/manageAvatar";
+import DOMPurify from "isomorphic-dompurify";
 
 export default async function BlogMedia({ data }) {
   function createTitle(title) {
     let text = title.length >= 56 ? title.substring(0, 56) + "..." : title;
-    return { __html: text };
+    return { __html: DOMPurify.sanitize(text) };
   }
   function createMarkup(body) {
-    return { __html: body };
+    return { __html: DOMPurify.sanitize(body) };
   }
   function Body(body) {
     return (

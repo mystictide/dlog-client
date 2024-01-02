@@ -14,6 +14,7 @@ import ManageAvatar from "@/components/client/user/settings/manageAvatar";
 import Breadcrumb from "@/components/server/blog/breadcrumb";
 import Comments from "@/components/server/blog/comments";
 import UserSocials from "@/components/server/ui/userSocials";
+import DOMPurify from 'isomorphic-dompurify';
 import { cookies } from "next/headers";
 import { cache } from "react";
 
@@ -35,7 +36,7 @@ export default async function View({ params, searchParams }) {
   const post = await cachedPost(params);
 
   function createMarkup(body) {
-    return { __html: body };
+    return { __html: DOMPurify.sanitize(body) };
   }
 
   function Body(body) {
