@@ -4,14 +4,13 @@ import { readCookie } from "@/assets/js/helpers";
 import SetTheme from "@/components/client/user/settings/setTheme";
 import { cookies } from "next/headers";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaBlog, FaCss3Alt, FaNode, FaReact, FaSass } from "react-icons/fa";
+import { FaBlog, FaCss3Alt, FaReact, FaSass } from "react-icons/fa";
 import {
   SiDotnet,
-  SiExpress,
   SiMicrosoftsqlserver,
   SiPostgresql,
   SiRedux,
-  SiUbuntu,
+  SiUbuntu
 } from "react-icons/si";
 import {
   TbBrandCSharp,
@@ -105,12 +104,6 @@ export default async function Home() {
           </span>
           <span>
             <TbBrandJavascript />
-          </span>
-          <span>
-            <FaNode />
-          </span>
-          <span>
-            <SiExpress />
           </span>
           <span>
             <TbBrandNextjs />

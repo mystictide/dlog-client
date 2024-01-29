@@ -86,7 +86,7 @@ export default function Register({ modalControl, setRegState }) {
       ></div>
       <div className="modal-content">
         <section className="heading">
-          <h1>Join up! {usernameExists}</h1>
+          <h1>Join up!</h1>
           <FaTimes
             onClick={() => {
               modalControl(false);
