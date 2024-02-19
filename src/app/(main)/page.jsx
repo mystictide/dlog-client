@@ -49,7 +49,7 @@ export default async function Home() {
             <h4>
               View my{" "}
               <a
-                href="/FurkanGüler_CV2023_en.pdf"
+                href="/FurkanGüler_CV2024_en.pdf"
                 alt="resume"
                 aria-label="resume"
                 target="_blank"
