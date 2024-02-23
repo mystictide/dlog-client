@@ -28,9 +28,9 @@ export default async function Projects() {
             projects portfolio
           </h1>
           <h4>
-            All projects built using a combination of .NET (& Core),
-            Node/ExpressJS, SQL Server, PostgreSQL, React (Redux) and SASS/CSS
-            and HTML. Dockerized and served on an Ubuntu Server.
+            All projects built using a combination of .NET (& Core), SQL Server,
+            PostgreSQL, React.js, Next.js and SASS/CSS and HTML. Served on an
+            Ubuntu Server configured with Nginx.
           </h4>
         </section>
         <section className="projects-container">
